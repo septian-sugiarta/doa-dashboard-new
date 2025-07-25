@@ -1,0 +1,15 @@
+<button
+  [type]="type"
+  [class]="class"
+  [ngClass]="{
+    'bg-secondary text-white': color === 'primary',
+    'bg-white text-secondary': color === 'secondary',
+    'bg-[#198754] text-secondary': color === 'tertiary',
+    'bg-[#FFC107] text-secondary': color === 'quaternary',
+    'bg-[#6C757D] text-secondary': color === 'quinary'
+  }"
+  (click)="handleClick()"
+  class="px-4 py-2 rounded-lg text-sm font-medium mt-0"
+>
+  <ng-content></ng-content>
+</button>

@@ -1,0 +1,325 @@
+<div class="container flex flex-col items-center justify-center py-8 gap-4">
+  <div
+    class="flex justify-center bg-white overflow-y-auto custom-scrollbar"
+    style="height: calc(100vh - 196px)"
+  >
+    <div
+      *ngIf="data"
+      class="bg-white w-[29.7cm] min-h-[21cm] border pt-[2.2cm] pl-[1.3cm] pr-[0.8cm]"
+      id="contentToConvert"
+    >
+      <div
+        class="grid grid-cols-[180px_515px_345px] border-black h-[85px] border-[1px] w-full font-myriad leading-none"
+      >
+        <div class="border-black border-r-[1px] p-2">
+          <img
+            src="assets/images/gmf-doa-logo-2.png"
+            alt="logodoa"
+            class="h-7"
+          />
+          <div class="italic text-center">EASA 21J.565</div>
+        </div>
+        <div
+          class="border-black border-r-[1px] flex justify-center text-xl font-bold pb-2 items-center"
+        >
+          AUDIT STATUS LOG
+        </div>
+        <div>
+          <div
+            class="grid grid-cols-[55px_5px_1fr] px-[6px] gap-x-[8px] auto-rows-auto border-b-[1px] border-black text-sm pb-2"
+          >
+            <div>Doc. No</div>
+            <div>:</div>
+            <div class="italic">{{ data.doc_nbr }}</div>
+          </div>
+          <div
+            class="grid grid-cols-[55px_5px_1fr] px-[6px] gap-x-[8px] auto-rows-auto pt-2 text-sm pb-2"
+          >
+            <div>Date</div>
+            <div>:</div>
+            <div class="italic">{{ getFormattedStatusLogDate() }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="font-myriad leading-none">
+        <div class="w-full border-black text-[8pt]">
+          <div
+            class="font-bold text-sm border-black border-b-[1px] border-l-[1px] border-r-[1px] px-[6px] pb-3 pt-1 whitespace-pre-line break-words"
+          >
+            Subject : <span class="font-normal">{{ data.subject }}</span>
+          </div>
+        </div>
+
+        <div
+          class="min-w-full border-[1px] border-b-0 border-black text-[8pt] mt-4"
+        >
+          <div
+            class="font-bold text-sm border-black border-b-[1px] px-[6px] whitespace-pre-line h- break-words pb-5 pt-1"
+          >
+            Reason of Issuence :
+            <span class="font-normal">{{ data.reason_of_issuance }} </span>
+          </div>
+
+          <div
+            class="grid grid-cols-[45px_100px_50px_80px_70px_150px_60px_80px_170px_70px_100px_60px] border-black border-b-[1px]"
+          >
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              No
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              NCR Doc. No.
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Issue Date
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Date of Response
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Finding Level
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Non-Conformance
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Audit Area
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Times Occured
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Corrective action taken by the auditee
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Target date
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Follow up audit result
+            </div>
+            <div
+              class="text-center pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Closing Date
+            </div>
+          </div>
+          <div
+            *ngFor="let ncrForm of data.ncrForms; let i = index"
+            class="grid grid-cols-[45px_100px_50px_80px_70px_150px_60px_80px_170px_70px_100px_60px] border-black border-b-[1px]"
+          >
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ i + 1 }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ ncrForm.NCR_nbr }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ getFormattedIssuedDate() }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ getFormattedAnswerDueDate() }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ ncrForm.Level_of_Finding }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ ncrForm.Encountered_Condition }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ ncrForm.Responsible_Office }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ ncrForm.times_occurred }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              <ng-container *ngFor="let ncrReply of data.ncrReplies">
+                <div>
+                  {{ ncrReply.Corrective_Action }}
+                </div>
+              </ng-container>
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ getFormattedImplementationDate() }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              <ng-container
+                *ngFor="let ncrFollowResult of data.ncrFollowResults"
+              >
+                <div>
+                  {{ ncrFollowResult.followup_audit_result }}
+                </div>
+              </ng-container>
+            </div>
+
+            <div class="pb-2 pt-1 px-1 whitespace-pre-line break-words">
+              <ng-container
+                *ngFor="let ncrFollowResult of data.ncrFollowResults"
+              >
+                <div>
+                  {{ getFormattedVerifiedDate() }}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="min-w-full border-[1px] border-black text-[8pt] mt-8 border-b-0"
+        >
+          <div
+            class="grid grid-cols-[45px_75px_140px_75px_255px_70px_60px_135px_180px] border-black border-b-[1px]"
+          >
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              No
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Action No.
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Reference PACR No.
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Issue Date
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Action Description
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Audit Area
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Status
+            </div>
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Implementation Date
+            </div>
+            <div
+              class="text-center pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              Evidence
+            </div>
+          </div>
+          <div
+            *ngFor="let actionLog of data.actionLogs; let i = index"
+            class="grid grid-cols-[45px_75px_140px_75px_255px_70px_60px_135px_180px] border-black border-b-[1px]"
+          >
+            <div
+              class="text-center border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ i + 1 }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ actionLog.action_nbr }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ actionLog.reference_PACLR_nbr }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ getFormattedActionIssuedDate() }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ actionLog.action_description }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ actionLog.audit_area }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ actionLog.status }}
+            </div>
+            <div
+              class="border-r-[1px] border-black pb-2 pt-1 px-1 whitespace-pre-line break-words"
+            >
+              {{ getFormattedImplementationActionDate() }}
+            </div>
+            <div class="pb-2 pt-1 px-1 whitespace-pre-line break-words">
+              {{ actionLog.evidence }}
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center px-8 mt-8 text-sm">
+          <div class="flex flex-col items-center">
+            <div>Prepared by</div>
+            <div class="mt-14">( {{ data.prepared_by }} )</div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div>Checked by</div>
+            <div class="mt-14">( {{ data.checked_by }} )</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-button (click)="convertToPDF()">Download</app-button>
+</div>

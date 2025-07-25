@@ -1,0 +1,198 @@
+<div class="container">
+  <div
+    class="w-full flex items-center justify-center sm:px-6 sm:py-8 p-4"
+    style="height: calc(100vh - 80px)"
+  >
+    <div class="bg-white rounded-lg p-8 w-full h-full flex flex-col gap-4">
+      <div class="flex justify-between items-center sm:flex-row flex-col">
+        <h1 class="text-primary font-bold sm:text-2xl text-xl">Action Log</h1>
+        <div
+          class="flex sm:flex-row flex-col sm:items-center sm:gap-4 gap-2 mt-2 sm:mt-0 items-start"
+        >
+          <app-button
+            (click)="exportToExcel()"
+            [color]="'tertiary'"
+            class="text-white text-sm"
+          >
+            Export to Excel
+          </app-button>
+          <app-search-bar
+            (searchChanged)="onSearchChange($event)"
+          ></app-search-bar>
+
+          <a href="/action-log">
+            <app-button
+              class="flex items-center justify-between gap-2 py-1 rounded-full"
+              [color]="'primary'"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="w-5 h-5 text-white"
+              >
+                <path
+                  fill="currentColor"
+                  d="M13 6a1 1 0 1 0-2 0v5H6a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5z"
+                />
+              </svg>
+              <p class="text-white font-medium text-xs">Create Action Log</p>
+            </app-button>
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1 w-full h-full">
+        <div class="mx-auto">
+          <div
+            class="grid grid-cols-[90px_120px_120px_100px_380px_100px_120px] gap-3 items-center justify-start pr-[15px]"
+          >
+            <app-sort-button
+              [sortState]="sortState.regulation_based"
+              (click)="sortData('regulation_based')"
+            >
+              <span #sortLabel>Regulation</span>
+            </app-sort-button>
+            <app-sort-button
+              [sortState]="sortState.action_nbr"
+              (click)="sortData('action_nbr')"
+            >
+              <span #sortLabel>Action Number</span>
+            </app-sort-button>
+            <app-sort-button
+              [sortState]="sortState.reference_PACLR_nbr"
+              (click)="sortData('reference_PACLR_nbr')"
+            >
+              <span #sortLabel>PACLR Number</span>
+            </app-sort-button>
+            <app-sort-button
+              [sortState]="sortState.issued_date"
+              (click)="sortData('issued_date')"
+            >
+              <span #sortLabel>Issue Date</span>
+            </app-sort-button>
+            <app-sort-button
+              [sortState]="sortState.action_description"
+              (click)="sortData('action_description')"
+            >
+              <span #sortLabel>Action Description</span>
+            </app-sort-button>
+            <app-sort-button
+              [sortState]="sortState.audit_area"
+              (click)="sortData('audit_area')"
+            >
+              <span #sortLabel>Audit Area</span>
+            </app-sort-button>
+
+            <span class="mx-auto text-xs font-semibold text-primary"
+              >Action</span
+            >
+          </div>
+        </div>
+        <div class="w-full border-b-[1px] border-primary mt-2"></div>
+        <div
+          #contentContainer
+          class="overflow-y-auto flex-grow custom-scrollbar h-[250px] mx-auto"
+          [class.pr-[15px]]="!isScrollable"
+          [class.pr-0]="isScrollable"
+        >
+          <div
+            *ngFor="let item of data; let i = index"
+            class="grid grid-cols-[90px_120px_120px_100px_380px_100px_120px] gap-3 items-start mt-2"
+          >
+            <span class="text-xs">{{ item.regulation_based }}</span>
+
+            <span class="text-xs">{{ item.action_nbr }}</span>
+            <span class="text-xs">{{ item.reference_PACLR_nbr }}</span>
+            <div
+              class="grid grid-cols-[20px_35px_40px] gap-1 justify-start items-center"
+            >
+              <div class="text-center text-xs">
+                {{ formattedIssuedDate[i].day }}
+              </div>
+              <div class="text-center text-xs">
+                {{ formattedIssuedDate[i].month }}
+              </div>
+              <div class="text-center text-xs">
+                {{ formattedIssuedDate[i].year }}
+              </div>
+            </div>
+            <span class="text-xs line-clamp-3">{{
+              item.action_description
+            }}</span>
+            <span class="text-xs">{{ item.audit_area }}</span>
+
+            <div class="flex justify-center gap-4 items-center">
+              <a [routerLink]="['/edit-action-log', item.actionLog_id]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <g fill="none">
+                    <path
+                      d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"
+                    />
+                    <path
+                      fill="currentColor"
+                      d="M16.035 3.015a3 3 0 0 1 4.099-.135l.144.135l.707.707a3 3 0 0 1 .135 4.098l-.135.144L9.773 19.177a1.5 1.5 0 0 1-.562.354l-.162.047l-4.454 1.028a1 1 0 0 1-1.22-1.088l.02-.113l1.027-4.455a1.5 1.5 0 0 1 .29-.598l.111-.125zm-.707 3.535l-8.99 8.99l-.636 2.758l2.758-.637l8.99-8.99l-2.122-2.12Zm3.536-2.121a1 1 0 0 0-1.32-.083l-.094.083l-.708.707l2.122 2.121l.707-.707a1 1 0 0 0 .083-1.32l-.083-.094z"
+                    />
+                  </g>
+                </svg>
+              </a>
+
+              <div
+                [ngClass]="{
+                  hidden: visibility === 'hidden',
+                  block: visibility === 'block'
+                }"
+              >
+                <button (click)="openModal(item.actionLog_id)">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 7h16m-10 4v6m4-6v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                    />
+                  </svg>
+                </button>
+
+                <app-modal
+                  [isOpen]="isModalOpen"
+                  (closeModalEvent)="closeModal()"
+                  (confirmActionEvent)="confirmDelete()"
+                  [extraClasses]="'bg-primary/5'"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="-2 -3 24 24"
+                    class="text-red-600 w-16 h-16 mx-auto mb-2"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m12.8 1.613l6.701 11.161c.963 1.603.49 3.712-1.057 4.71a3.2 3.2 0 0 1-1.743.516H3.298C1.477 18 0 16.47 0 14.581c0-.639.173-1.264.498-1.807L7.2 1.613C8.162.01 10.196-.481 11.743.517c.428.276.79.651 1.057 1.096M10 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2m0-9a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V6a1 1 0 0 0-1-1"
+                    />
+                  </svg>
+                  <h2 class="text-lg font-semibold text-center text-primary">
+                    Delete this Action Log?
+                  </h2>
+                  <h4 class="text-gray-500 text-sm text-center mt-2">
+                    Are you sure you want to delete this Action Log? This action
+                    cannot be undone.
+                  </h4>
+                </app-modal>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

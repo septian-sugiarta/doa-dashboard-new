@@ -1,0 +1,39 @@
+<div
+  class="flex flex-col"
+  [ngClass]="{
+    ' gap-3': variant === 'primary',
+    ' gap-1': variant === 'secondary'
+  }"
+>
+  <label
+    [for]="id"
+    class="text-sm font-semibold text-primary flex items-center gap-1 px-2"
+  >
+    <ng-content></ng-content>
+    <span *ngIf="required" class="text-red-500">*</span>
+  </label>
+
+  <input
+    [type]="type"
+    [name]="name"
+    [id]="id"
+    [(ngModel)]="value"
+    [placeholder]="placeholder"
+    [required]="required"
+    [attr.maxlength]="maxlength"
+    (input)="validateInput()"
+    (blur)="onBlur()"
+    [class.border-b-red-500]="isInvalid"
+    [class.text-quaternary]="isInvalid"
+    [ngClass]="{
+      'border-b-[1px] rounded-none px-2 pb-1': variant === 'primary',
+      'border-[1px] rounded-lg  py-1 mx-2 px-3': variant === 'secondary'
+    }"
+    class="text-sm text-primary border-secondary outline-none placeholder:text-quaternary col-span-4"
+    [disabled]="disabled"
+  />
+
+  <div *ngIf="isInvalid" class="text-red-500 text-xs px-2">
+    {{ errorMessage }}
+  </div>
+</div>

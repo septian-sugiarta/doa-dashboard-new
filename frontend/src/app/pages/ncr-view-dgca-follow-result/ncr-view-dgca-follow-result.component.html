@@ -1,0 +1,256 @@
+<div class="container flex flex-col items-center justify-center py-8 gap-4">
+  <div
+    class="flex justify-center bg-white overflow-y-auto custom-scrollbar"
+    style="height: calc(100vh - 196px)"
+  >
+    <div
+      *ngIf="data && data.RegulationBased === 'DGCA'"
+      class="bg-white w-[21cm] min-h-[29.5cm] border pt-[0.87cm] pl-[1.77cm] pr-[1.27cm]"
+      id="contentToConvert"
+    >
+      <img
+        src="assets/images/gmf-doa-logo-2.png"
+        alt="logodoa"
+        class="h-[65px] pl-[160px] pt-[2.5px] w-[525px] pb-2"
+      />
+      <div class="font-myriad leading-none">
+        <div class="min-w-full border-[1px] border-black text-[11pt]">
+          <div class="grid grid-cols-[385px_1fr] border-b-[1px] border-black">
+            <div
+              class="border-r-[1px] border-black text-center font-semibold text-[16pt] align-top px-10 pt-2 pb-4"
+            >
+              NON-CONFORMANCE REPORT (NCR)
+            </div>
+            <div class="grid grid-cols-[90px_1fr_167px] px-[6px] pt-2 pb-4">
+              <div class="">Audit Plan No.</div>
+              <div>:</div>
+              <div class="italic whitespace-pre-line break-words">
+                {{ data.Audit_Plan_No }}
+              </div>
+              <div class="">NCR no</div>
+              <div>:</div>
+              <div class="italic whitespace-pre-line break-words">
+                {{ data.NCR_nbr }}
+              </div>
+              <div class="">Issued date</div>
+              <div>:</div>
+              <div class="italic whitespace-pre-line break-words">
+                {{ getFormattedIssuedDate() }}
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[385px_1fr] border-b-[1px] border-black">
+            <div class="px-[6px] border-r-[1px] border-black pb-3">
+              <div class="">
+                Area / Office / Company:
+                <span class="italic whitespace-pre-line break-words">{{
+                  data.Responsible_Office
+                }}</span>
+              </div>
+              <div class="mt-6">
+                Audit Type:
+                <span class="italic whitespace-pre-line break-words">{{
+                  data.Audit_Type
+                }}</span>
+              </div>
+            </div>
+            <div>
+              <div class="grid grid-cols-[25px_1fr_232px] px-[6px] pb-3">
+                <div class="">To</div>
+                <div>:</div>
+                <div class="italic whitespace-pre-line break-words">
+                  {{ data.To_UIC }}
+                </div>
+                <div class="mt-0">Attn.</div>
+                <div>:</div>
+                <div class="italic whitespace-pre-line break-words">
+                  {{ data.Attention }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px] border-b-[1px] border-black pt-1 pb-3">
+            Step 1 (to filled by auditor within 5 days after end of audit,
+            unless Immediate Action Notice is required)
+          </div>
+          <div class="px-[6px] pt-1">
+            Regulation requirement(s) and Reference:
+          </div>
+          <div
+            class="px-[6px] mt-1 italic pb-3 border-b-[1px] border-black whitespace-pre-line break-words"
+          >
+            {{ data.Required_condition_reff }}
+          </div>
+
+          <div
+            class="grid grid-cols-[210px_1fr] border-b-[1px] border-black pt-1 pb-3"
+          >
+            <div class="px-[6px]">
+              <div class="mb-1">
+                Level of Finding:
+                <span class="italic whitespace-pre-line break-words">{{
+                  data.Level_of_Finding
+                }}</span>
+              </div>
+              <div class="">
+                NCR due date:
+                <span class="italic">{{
+                  getFormattedImplementationDate()
+                }}</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="mb-1">
+                Problem Analysis:
+                <span
+                  [ngClass]="{
+                    'line-through': data.Problem_Analysis === 'Not required'
+                  }"
+                  >required</span
+                >
+                <span> / </span>
+                <span
+                  [ngClass]="{
+                    'line-through': data.Problem_Analysis === 'Required'
+                  }"
+                  >not required</span
+                >
+              </div>
+
+              <div class="flex items-center">
+                <div>Issue Immediate Action Notice (IAN):</div>
+                <div [ngClass]="{ 'line-through': data.Issue_IAN === 'Yes' }">
+                  No
+                </div>
+
+                <div>/</div>
+                <div [ngClass]="{ 'line-through': data.Issue_IAN === 'No' }">
+                  Yes
+                </div>
+
+                <div [ngClass]="{ 'line-through': data.Issue_IAN === 'No' }">
+                  IAN No.:
+                </div>
+
+                <div
+                  class="whitespace-pre-line break-words"
+                  [ngClass]="{ hidden: data.Issue_IAN === 'No' }"
+                >
+                  {{ data.IAN_nbr }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px]">Encountered Condition:</div>
+          <div
+            class="px-[6px] mt-1 italic pb-3 border-b-[1px] border-black whitespace-pre-line break-words"
+          >
+            {{ data.Encountered_Condition }}
+          </div>
+
+          <div class="grid grid-cols-[345px_1fr] border-b-[1px] border-black">
+            <div class="px-[6px] border-r-[1px] border-black">
+              <div class="">Audited by / Date</div>
+              <div class="h-12"></div>
+              <div class="pb-3 italic">
+                {{ data.Audited_by }}
+                <span> / {{ getFormattedAuditDate() }}</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">Acknowledged by Auditee / Date</div>
+              <div class="h-12"></div>
+              <div class="pb-3 italic">
+                {{ data.Acknowledge_by }}
+                <span> / {{ getFormattedAcknowledgeDate() }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px] border-b-[1px] border-black pt-1 pb-3">
+            Step 2 (to be filled by auditee within 14 days after NCR is issued)
+          </div>
+          <div class="px-[6px]">Root Cause of the Problem</div>
+          <div
+            class="px-[6px] mt-1 italic border-b-[1px] border-black pb-3 whitespace-pre-line break-words"
+          >
+            {{ data.RCA_problem }}
+          </div>
+
+          <div class="grid grid-cols-[345px_1fr] border-b-[1px] border-black">
+            <div class="px-[6px] border-r-[1px] border-black">
+              <div class="">Identified by Auditee / Date</div>
+              <div class="h-12"></div>
+              <div class="pb-3 italic">
+                {{ data.Identified_by_Auditee }}
+                <span> / {{ getFormattedIdentifiedDate() }}</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">Accepted by Auditor / Date</div>
+              <div class="h-12"></div>
+              <div class="pb-3 italic">
+                {{ data.Accept_by_Auditor }}
+                <span> / {{ getFormattedAuditorAcceptDate() }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px] border-b-[1px] border-black pt-1 pb-3 align-top">
+            Step 3 (to be filled by auditee within 14 days after NCR is issued)
+          </div>
+          <div class="px-[6px]">Recommended Corrective Action(s):</div>
+          <div
+            class="px-[6px] mt-1 italic border-b-[1px] border-black pb-3 whitespace-pre-line break-words"
+          >
+            {{ data.Recommend_corrective_action }}
+          </div>
+
+          <div class="grid grid-cols-[345px_1fr] border-b-[1px] border-black">
+            <div class="px-[6px] border-r-[1px] border-black">
+              <div class="">Proposed by Auditee / Date</div>
+              <div class="h-12"></div>
+              <div class="pb-3 italic">
+                {{ data.Identified_by_Auditee }}
+                <span> / {{ getFormattedIdentifiedDate() }}</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">
+                Accepted by Chief of Independent Monitoring / Date
+              </div>
+              <div class="h-8"></div>
+              <div class="pb-3 italic">
+                {{ data.Accept_by_Auditor }}
+                <span> / {{ getFormattedAuditorAcceptDate() }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px] border-b-[1px] border-black pb-3 pt-1 align-top">
+            Step 4 (to filled by auditor within required time according to level
+            of finding)
+          </div>
+
+          <div class="grid grid-cols-[345px_1fr]">
+            <div class="px-[6px] border-r-[1px] border-black">
+              <div class="">Corrective Actions and Implementation Date:</div>
+              <div class="h-12"></div>
+              <div class="pb-3 italic whitespace-pre-line break-words">
+                <span>{{ data.Close_Corrective_Actions }}</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">
+                Verified by Chief of Independent Monitoring: Date :
+              </div>
+              <div class="h-12"></div>
+              <div class="pb-3 italic">
+                {{ data.Verified_Chief_IM }}
+                <span> / {{ getFormattedVerifiedDate() }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-button (click)="convertToPDF()">Download</app-button>
+</div>

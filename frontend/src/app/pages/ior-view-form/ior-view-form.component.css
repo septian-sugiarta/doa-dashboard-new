@@ -1,0 +1,27 @@
+@import url("https://use.typekit.net/iim4tjg.css");
+
+.font-custom {
+  font-family: "Nama-Font-Dari-Typekit", sans-serif;
+}
+
+.custom-scrollbar {
+  box-sizing: border-box;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #dadce0;
+  border-radius: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #80868b;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f9f9f9;
+  border-radius: 5px;
+}

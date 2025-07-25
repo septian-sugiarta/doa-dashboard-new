@@ -1,0 +1,620 @@
+<div class="container">
+  <div
+    class="w-full flex items-center justify-center sm:px-6 sm:py-8 p-4"
+    style="height: calc(100vh - 80px)"
+  >
+    <div class="bg-white rounded-lg p-8 w-full h-full flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-primary font-bold sm:text-2xl text-xl">
+          Non-Conformance Report (NCR) Follow Result
+        </h1>
+        <p class="text-xs text-red-500 font-medium">
+          * Indicates required question
+        </p>
+      </div>
+      <form
+        (submit)="$event.preventDefault(); onSubmit()"
+        action=""
+        class="flex flex-col gap-7 overflow-y-auto flex-grow custom-scrollbar"
+      >
+        <app-text-input
+          id="RegulationBased"
+          name="RegulationBased"
+          type="text"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.RegulationBased"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Regulation Based</app-text-input
+        >
+
+        <app-text-input
+          id="Subject"
+          name="Subject"
+          type="text"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Subject"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Subject</app-text-input
+        >
+
+        <app-text-input
+          id="Audit_Plan_No"
+          name="Audit_Plan_No"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Audit_Plan_No"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Audit Plan No.</app-text-input
+        >
+        <app-text-input
+          id="NCR_nbr"
+          name="NCR_nbr"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.NCR_nbr"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >NCR No.</app-text-input
+        >
+        <app-text-input
+          id="Issued_date"
+          name="Issued_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Issued_date"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Issued Date</app-text-input
+        >
+
+        <app-text-input
+          id="Responsible_Office"
+          name="Responsible_Office"
+          type="text"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Responsible_Office"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Responsibility Office</app-text-input
+        >
+
+        <app-text-input
+          id="Audit_Type"
+          name="Audit_Type"
+          type="text"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Audit_Type"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Audit Type</app-text-input
+        >
+
+        <app-text-input
+          id="Audit_scope"
+          name="Audit_scope"
+          type="text"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Audit_scope"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Audit Scope</app-text-input
+        >
+
+        <app-text-input
+          id="To_UIC"
+          name="To_UIC"
+          type="text"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.To_UIC"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >To UIC</app-text-input
+        >
+
+        <app-text-input
+          id="Attention"
+          name="Attention"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Attention"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Attention</app-text-input
+        >
+        <app-text-area-input
+          id="Required_condition_reff"
+          name="Required_condition_reff"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Required_condition_reff"
+          class=""
+          [disabled]="true"
+          >Require Condition and Reference</app-text-area-input
+        >
+
+        <app-text-input
+          id="Level_of_Finding"
+          name="Level_of_Finding"
+          type="text"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Level_of_Finding"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Level of Finding</app-text-input
+        >
+
+        <app-text-input
+          id="implementation_date"
+          name="implementation_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.implementation_date"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >NCR Due Date</app-text-input
+        >
+
+        <app-text-input
+          id="Problem_Analysis"
+          name="Problem_Analysis"
+          type="text"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Problem_Analysis"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Problem Analysis</app-text-input
+        >
+
+        <app-text-input
+          id="Answer_due_date"
+          name="Answer_due_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Answer_due_date"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Answer Due Date</app-text-input
+        >
+
+        <app-text-input
+          id="Issue_IAN"
+          name="Issue_IAN"
+          type="text"
+          placeholder="Select an option"
+          [required]="false"
+          [(value)]="formData.Issue_IAN"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Issue Immediate Action Notice (IAN)</app-text-input
+        >
+
+        <app-text-input
+          id="IAN_nbr"
+          name="IAN_nbr"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.IAN_nbr"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >IAN No.</app-text-input
+        >
+        <app-text-area-input
+          id="Encountered_Condition"
+          name="Encountered_Condition"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Encountered_Condition"
+          class=""
+          [disabled]="true"
+          >Encountered Condition</app-text-area-input
+        >
+        <app-text-input
+          id="Audited_by"
+          name="Audited_by"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Audited_by"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Audited by</app-text-input
+        >
+        <app-text-input
+          id="Audit_Date"
+          name="Audit_Date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Audit_Date"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Audit Date</app-text-input
+        >
+        <app-text-input
+          id="Acknowledge_by"
+          name="Acknowledge_by"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Acknowledge_by"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Acknowledge by</app-text-input
+        >
+        <app-text-input
+          id="Acknowledge_date"
+          name="Acknowledge_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Acknowledge_date"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Acknowledge Date</app-text-input
+        >
+
+        <app-text-input
+          id="Status"
+          name="Status"
+          type="text"
+          placeholder="Select an option"
+          [required]="false"
+          [(value)]="formData.Status"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Status</app-text-input
+        >
+
+        <app-text-area-input
+          id="Remark"
+          name="Remark"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Remark"
+          class=""
+          [disabled]="true"
+          >Remark</app-text-area-input
+        >
+
+        <app-text-input
+          id="times_occurred"
+          name="times_occurred"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.times_occurred"
+          class=""
+          variant="primary"
+          [disabled]="true"
+          >Times Occurred</app-text-input
+        >
+
+        <app-text-area-input
+          id="rca_problem"
+          name="rca_problem"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.RCA_problem"
+          class=""
+          [disabled]="true"
+          >Root Cause the Problem</app-text-area-input
+        >
+
+        <app-text-area-input
+          id="Corrective Action"
+          name="Corrective Action"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Corrective_Action"
+          class=""
+          [disabled]="true"
+          >Corrective Action</app-text-area-input
+        >
+
+        <app-text-area-input
+          id="Preventive Action"
+          name="Preventive Action"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Preventive_Action"
+          class=""
+          [disabled]="true"
+          >Preventive Action</app-text-area-input
+        >
+        <app-text-area-input
+          id="Recommended Corrective Action(s)"
+          name="Recommended Corrective Action(s)"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Recommend_corrective_action"
+          class=""
+          [disabled]="true"
+          >Recommended Corrective Action(s)</app-text-area-input
+        >
+
+        <app-text-input
+          id="implementationReply_date"
+          name="implementationReply_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.implementationReply_date"
+          class=""
+          variant="primary"
+          >Implementation Date</app-text-input
+        >
+
+        <app-text-input
+          id="Identified by Auditee"
+          name="Identified by Auditee"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Identified_by_Auditee"
+          variant="primary"
+          [disabled]="true"
+          >Identified by Auditee</app-text-input
+        >
+        <app-text-input
+          id="Identified Date"
+          name="Identified Date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Identified_Date"
+          variant="primary"
+          [disabled]="true"
+          >Identified Date</app-text-input
+        >
+
+        <app-text-input
+          id="Accepted by Auditor"
+          name="Accepted by Auditor"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Accept_by_Auditor"
+          variant="primary"
+          [disabled]="true"
+          >Accepted by Auditor</app-text-input
+        >
+        <app-text-input
+          id="Auditor Accepted Date"
+          name="Auditor Accepted Date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Auditor_Accept_date"
+          variant="primary"
+          [disabled]="true"
+          >Auditor Accepted Date</app-text-input
+        >
+
+        <app-text-area-input
+          id="Close Corrective Actions"
+          name="Close Corrective Actions"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Close_Corrective_Actions"
+          class=""
+          >Close Corrective Actions</app-text-area-input
+        >
+
+        <app-text-input
+          id="Proposed Close Auditee"
+          name="Proposed Close Auditee"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Proposed_Close_Auditee"
+          variant="primary"
+          >Proposed Close Auditee</app-text-input
+        >
+
+        <app-text-input
+          id="Proposed Close Date"
+          name="Proposed Close Date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Proposed_Close_Date"
+          class=""
+          variant="primary"
+          >Proposed Close Date</app-text-input
+        >
+        <app-text-input
+          id="Implemented Close Date"
+          name="Implemented Close Date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Implemented_close_date"
+          variant="primary"
+          >Implemented Close Date</app-text-input
+        >
+
+        <app-option-input
+          id="Is Close"
+          name="Is Close"
+          placeholder="Select an option"
+          [required]="false"
+          [(value)]="formData.Is_close"
+          [options]="[
+            { value: 'Close', label: 'Close' },
+            { value: 'Open', label: 'Open' }
+          ]"
+          >Is Close</app-option-input
+        >
+        <app-option-input
+          id="Effectiveness"
+          name="Effectiveness"
+          placeholder="Select an option"
+          [required]="false"
+          [(value)]="formData.effectiveness"
+          [options]="[
+            { value: 'Effective', label: 'Effective' },
+            { value: 'Not Effective', label: 'Not Effective' }
+          ]"
+          >Effectiveness</app-option-input
+        >
+
+        <app-text-input
+          id="Refer to Verify Sheet"
+          name="Refer to Verify Sheet"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Refer_to_Verify_Sheet"
+          variant="primary"
+          >Refer to Verify Sheet</app-text-input
+        >
+        <app-text-input
+          id="Sheet No."
+          name="Sheet No."
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Sheet_No"
+          class=""
+          variant="primary"
+          >Sheet No.</app-text-input
+        >
+        <app-text-input
+          id="New NCR Issue No."
+          name="New NCR Issue No."
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.New_NCR_Issue_nbr"
+          class=""
+          variant="primary"
+          >New NCR Issue No.</app-text-input
+        >
+        <app-text-input
+          id="Close Approved by"
+          name="Close Approved by"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Close_approved_by"
+          variant="primary"
+          >Close Approved by</app-text-input
+        >
+        <app-text-input
+          id="Close Approved Date"
+          name="Close Approved Date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Close_approved_date"
+          variant="primary"
+          >Close Approved Date</app-text-input
+        >
+        <app-text-input
+          id="Verified Chief IM"
+          name="Verified Chief IM"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Verified_Chief_IM"
+          variant="primary"
+          >Verified Chief IM</app-text-input
+        >
+        <app-text-input
+          id="Verified Date"
+          name="Verified Date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          class=""
+          [(value)]="formData.Verified_Date"
+          variant="primary"
+          >Verified Date</app-text-input
+        >
+        <app-text-input
+          id="followup_audit_result"
+          name="followup_audit_result"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.followup_audit_result"
+          class=""
+          variant="primary"
+          >Follow Up Audit Result</app-text-input
+        >
+        <app-text-input
+          id="evidence"
+          name="evidence"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.evidence"
+          class=""
+          variant="primary"
+          >Evidence</app-text-input
+        >
+
+        <app-button class="w-full mt-1" [color]="'primary'" type="submit"
+          >Submit</app-button
+        >
+      </form>
+    </div>
+  </div>
+</div>

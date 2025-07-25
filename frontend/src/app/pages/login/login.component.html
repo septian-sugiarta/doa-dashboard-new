@@ -1,0 +1,68 @@
+<div
+  class="w-full flex items-center justify-center"
+  style="height: calc(100vh - 80px)"
+>
+  <div
+    class="flex items-center justify-center bg-secondary/30 sm:w-[400px] w-64 rounded-lg p-6"
+  >
+    <div class="flex flex-col w-full">
+      <h1 class="text-center text-white font-bold text-2xl">Please Log In</h1>
+      <form
+        (submit)="$event.preventDefault(); onSubmit()"
+        action=""
+        class="flex flex-col mt-5"
+      >
+        <app-input-login
+          id="username"
+          name="username"
+          type="text"
+          placeholder="Enter your username"
+          [required]="false"
+          [(value)]="username"
+          class=""
+          variant="secondary"
+        >
+          Username
+        </app-input-login>
+
+        <app-input-login
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Enter your password"
+          [required]="false"
+          [(value)]="password"
+          class="mt-4"
+          variant="secondary"
+          (input)="clearPasswordErrorMessage()"
+        >
+          Password
+        </app-input-login>
+
+        <p
+          *ngIf="password && password.length < 8"
+          class="text-red-500 text-xs mt-1 font-semibold"
+        >
+          Password must be at least 8 characters.
+        </p>
+        <p
+          *ngIf="passwordErrorMessage"
+          class="text-red-500 text-xs mt-1 font-semibold"
+        >
+          {{ passwordErrorMessage }}
+        </p>
+
+        <app-button class="w-full mt-3" [color]="'primary'" type="submit"
+          >Log In</app-button
+        >
+      </form>
+
+      <p class="text-xs text-white text-center mt-1">
+        Don&apos;t have an account or forgot your password? <br />
+        <span class="text-xs text-white font-semibold"
+          >Contact your admin.</span
+        >
+      </p>
+    </div>
+  </div>
+</div>

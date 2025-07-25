@@ -1,0 +1,138 @@
+<div class="container">
+  <div
+    class="w-full flex items-center justify-center sm:px-6 sm:py-8 p-4"
+    style="height: calc(100vh - 80px)"
+  >
+    <div class="bg-white rounded-lg p-8 w-full h-full flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-primary font-bold sm:text-2xl text-xl">Action Log</h1>
+        <p class="text-xs text-red-500 font-medium">
+          * Indicates required question
+        </p>
+      </div>
+      <form
+        (submit)="$event.preventDefault(); onSubmit()"
+        action=""
+        class="flex flex-col gap-7 overflow-y-auto flex-grow custom-scrollbar"
+      >
+        <app-option-input
+          id="regulation_based"
+          name="regulation_based"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.regulation_based"
+          [options]="[
+            { value: 'DGCA', label: 'DGCA' },
+            { value: 'EASA', label: 'EASA' }
+          ]"
+          >Regulation Based</app-option-input
+        >
+
+        <app-text-input
+          id="action_nbr"
+          name="action_nbr"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.action_nbr"
+          class=""
+          variant="primary"
+          >Action No.</app-text-input
+        >
+        <app-text-input
+          id="reference_PACLR_nbr "
+          name="reference_PACLR_nbr "
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.reference_PACLR_nbr"
+          class=""
+          variant="primary"
+          >Reference PACR No.</app-text-input
+        >
+        <app-text-input
+          id="issued_date"
+          name="issued_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.issued_date"
+          class=""
+          variant="primary"
+          >Issue Date</app-text-input
+        >
+
+        <app-text-area-input
+          id="action_description"
+          name="action_description"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.action_description"
+          class=""
+          >Action Description</app-text-area-input
+        >
+
+        <app-text-input
+          id="audit_area"
+          name="audit_area"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.audit_area"
+          class=""
+          variant="primary"
+          >Audit Area</app-text-input
+        >
+        <app-text-input
+          id="status"
+          name="status"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.status"
+          class=""
+          variant="primary"
+          >Status</app-text-input
+        >
+        <app-text-input
+          id="implementationAction_date"
+          name="implementationAction_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.implementationAction_date"
+          class=""
+          variant="primary"
+          >Implementation Date</app-text-input
+        >
+        <app-text-input
+          id="evidence"
+          name="evidence"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.evidence"
+          class=""
+          variant="primary"
+          >Evidence</app-text-input
+        >
+        <app-text-input
+          id="close_date"
+          name="close_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.close_date"
+          class=""
+          variant="primary"
+          >Closing Date</app-text-input
+        >
+
+        <app-button class="w-full mt-1" [color]="'primary'" type="submit"
+          >Submit</app-button
+        >
+      </form>
+    </div>
+  </div>
+</div>

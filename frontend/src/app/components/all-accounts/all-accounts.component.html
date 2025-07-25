@@ -1,0 +1,61 @@
+<div class="h-72 px-2 w-full max-w-full">
+  <div
+    class="grid grid-cols-[100px_230px_80px_70px_230px_100px] gap-6 items-center justify-start pr-[15px]"
+  >
+    <app-sort-button
+      [sortState]="sortState.id_number"
+      (click)="sortData('id_number')"
+    >
+      <span #sortLabel>ID Number</span>
+    </app-sort-button>
+    <app-sort-button [sortState]="sortState.name" (click)="sortData('name')">
+      <span #sortLabel>Name</span>
+    </app-sort-button>
+    <app-sort-button [sortState]="sortState.unit" (click)="sortData('unit')">
+      <span #sortLabel>Unit</span>
+    </app-sort-button>
+    <app-sort-button [sortState]="sortState.role" (click)="sortData('role')">
+      <span #sortLabel>Role</span>
+    </app-sort-button>
+    <app-sort-button [sortState]="sortState.email" (click)="sortData('email')">
+      <span #sortLabel>Email</span>
+    </app-sort-button>
+    <app-sort-button
+      [sortState]="sortState.username"
+      (click)="sortData('username')"
+    >
+      <span #sortLabel>Username</span>
+    </app-sort-button>
+  </div>
+  <div class="w-full border-b-[1px] border-primary mt-2"></div>
+
+  <div
+    class="overflow-y-auto flex-grow custom-scrollbar h-[250px] mt-2 mx-auto"
+    [class.pr-[15px]]="!isScrollable"
+    [class.pr-0]="isScrollable"
+  >
+    <div
+      *ngFor="let user of data"
+      class="grid grid-cols-[100px_230px_80px_70px_230px_100px] gap-6 items-center"
+    >
+      <div class="text-sm text-primary">
+        {{ user.id_number }}
+      </div>
+      <div class="text-sm text-primary">
+        {{ user.name }}
+      </div>
+      <div class="text-sm text-primary">
+        {{ user.unit }}
+      </div>
+      <div class="text-sm text-primary">
+        {{ user.role }}
+      </div>
+      <div class="text-sm text-primary">
+        {{ user.email }}
+      </div>
+      <div class="text-sm text-primary">
+        {{ user.username }}
+      </div>
+    </div>
+  </div>
+</div>

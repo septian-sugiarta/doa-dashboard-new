@@ -1,0 +1,115 @@
+<div class="container">
+  <div
+    class="w-full flex items-center justify-center sm:px-6 sm:py-8 p-4"
+    style="height: calc(100vh - 80px)"
+  >
+    <div class="bg-white rounded-lg p-8 w-full h-full flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-primary font-bold sm:text-2xl text-xl">
+          NCR Verification Sheet (NVS)
+        </h1>
+        <p class="text-xs text-red-500 font-medium">
+          * Indicates required question
+        </p>
+      </div>
+      <form
+        (submit)="$event.preventDefault(); onSubmit()"
+        class="flex flex-col gap-6 overflow-y-auto flex-grow custom-scrollbar"
+      >
+        <!-- Verification No -->
+        <app-text-input
+          id="verification_no"
+          name="verification_no"
+          type="text"
+          placeholder="Enter Verification No"
+          [required]="true"
+          [(value)]="formData.verification_no"
+          variant="primary"
+        >
+          NCR Verification No.
+        </app-text-input>
+
+        <!-- NCR No. -->
+        <app-text-input
+          id="ncr_no"
+          name="ncr_no"
+          type="text"
+          placeholder="Enter NCR No"
+          [required]="true"
+          [(value)]="formData.NCR_nbr"
+          class=""
+          variant="primary"
+          [disabled]="true"
+        >
+          NCR No.
+        </app-text-input>
+
+        <!-- Verification Results -->
+        <app-text-area-input
+          id="verification_result"
+          name="verification_result"
+          placeholder="Enter verification result"
+          [required]="true"
+          [(value)]="formData.verification_result"
+        >
+          Verification Results
+        </app-text-area-input>
+
+        <!-- Effectiveness -->
+        <app-option-input
+          id="is_effective"
+          name="is_effective"
+          placeholder="Select Effectiveness"
+          [required]="true"
+          [(value)]="formData.is_effective"
+          [options]="[
+            { value: 'Effective', label: 'Effective' },
+            { value: 'Not Effective', label: 'Not Effective' }
+          ]"
+        >
+          Effectiveness
+        </app-option-input>
+
+        <!-- New NCR / Reminder -->
+        <app-text-input
+          id="reminder_no"
+          name="reminder_no"
+          type="text"
+          placeholder="Enter Reminder No"
+          [required]="false"
+          [(value)]="formData.reminder_no"
+          variant="primary"
+        >
+          New NCR / Reminder No.
+        </app-text-input>
+
+        <!-- Verified By -->
+        <app-text-input
+          id="verified_by"
+          name="verified_by"
+          type="text"
+          placeholder="Enter Verifier Name"
+          [required]="true"
+          [(value)]="formData.verified_by"
+          variant="primary"
+        >
+          Verified by
+        </app-text-input>
+
+        <!-- Verification Date -->
+        <app-text-input
+          id="verified_date"
+          name="verified_date"
+          type="date"
+          placeholder="Select Date"
+          [required]="true"
+          [(value)]="formData.verified_date"
+          variant="primary"
+        >
+          Date
+        </app-text-input>
+
+        <app-button class="w-full mt-1" [color]="'primary'" type="submit"
+          >Submit</app-button
+        >
+      </form>

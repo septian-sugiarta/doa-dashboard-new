@@ -1,0 +1,415 @@
+<div class="container">
+  <div
+    class="w-full flex items-center justify-center sm:px-6 sm:py-8 p-4"
+    style="height: calc(100vh - 80px)"
+  >
+    <div class="bg-white rounded-lg p-8 w-full h-full flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-primary font-bold sm:text-2xl text-xl">
+          Non-Conformance Report (NCR) Form
+        </h1>
+        <p class="text-xs text-red-500 font-medium">
+          * Indicates required question
+        </p>
+      </div>
+      <form
+        (submit)="$event.preventDefault(); onSubmit()"
+        action=""
+        class="flex flex-col gap-7 overflow-y-auto flex-grow custom-scrollbar"
+      >
+        <app-option-input
+          id="RegulationBased"
+          name="RegulationBased"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.RegulationBased"
+          [options]="[
+            { value: 'DGCA', label: 'DGCA' },
+            { value: 'EASA', label: 'EASA' }
+          ]"
+          >Regulation Based</app-option-input
+        >
+
+        <app-option-input
+          id="Subject"
+          name="Subject"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Subject"
+          [options]="[
+            {
+              value: 'Organisation, handbook',
+              label: 'Organisation, handbook'
+            },
+            {
+              value: 'Management of the handbook and procedures',
+              label: 'Management of the handbook and procedures'
+            },
+            { value: 'Record keeping', label: 'Record keeping' },
+            {
+              value: 'Safety Management System',
+              label: 'Safety Management System'
+            },
+            { value: 'Competences', label: 'Competences' },
+            {
+              value: 'Collection of occurrences',
+              label: 'Collection of occurrences'
+            },
+            {
+              value: 'Investigation of occurrences',
+              label: 'Investigation of occurrences'
+            },
+            {
+              value: 'Reporting of occurrences',
+              label: 'Reporting of occurrences'
+            },
+            { value: 'Supplier control', label: 'Supplier control' },
+            { value: 'Process monitoring', label: 'Process monitoring' },
+            {
+              value: 'Flight test activity, PTF',
+              label: 'Flight test activity, PTF'
+            },
+            {
+              value: 'Environmental protection',
+              label: 'Environmental protection'
+            },
+            {
+              value: 'Classification of changes and repairs',
+              label: 'Classification of changes and repairs'
+            },
+            {
+              value: 'Determination of certification basis',
+              label: 'Determination of certification basis'
+            },
+            {
+              value: 'Certification Programme',
+              label: 'Certification Programme'
+            },
+            {
+              value: 'Compliance demonstration, safety demonstration',
+              label: 'Compliance demonstration, safety demonstration'
+            },
+            {
+              value: 'Changes and repairs approval',
+              label: 'Changes and repairs approval'
+            },
+            {
+              value: 'Identification of products, parts and appliances',
+              label: 'Identification of products, parts and appliances'
+            },
+            { value: 'DO/PO Design data', label: 'DO/PO Design data' },
+            { value: 'DO/PO concession', label: 'DO/PO concession' },
+            {
+              value: 'Prepare and publish ICA and manuals and instructions',
+              label: 'Prepare and publish ICA and manuals and instructions'
+            }
+          ]"
+          >Subject</app-option-input
+        >
+
+        <app-text-input
+          id="Audit_Plan_No"
+          name="Audit_Plan_No"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Audit_Plan_No"
+          class=""
+          variant="primary"
+          >Audit Plan No.</app-text-input
+        >
+        <app-text-input
+          id="NCR_nbr"
+          name="NCR_nbr"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.NCR_nbr"
+          class=""
+          variant="primary"
+          >NCR No.</app-text-input
+        >
+        <app-text-input
+          id="Issued_date"
+          name="Issued_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Issued_date"
+          class=""
+          variant="primary"
+          >Issued Date</app-text-input
+        >
+
+        <app-option-input
+          id="Responsible_Office"
+          name="Responsible_Office"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Responsible_Office"
+          [options]="[
+            {
+              value: 'Airworthiness Office',
+              label: 'AO : Airworthiness Office'
+            },
+            { value: 'Design Office', label: 'DO : Design Office ' },
+            {
+              value: 'Independent Monitoring',
+              label: 'IM : Independent Monitoring'
+            },
+            { value: 'Partner', label: 'PR : Partner' },
+            { value: 'Subcontractor', label: 'SC : Subcontractor' },
+            { value: 'BRIN', label: 'BR : BRIN' },
+            { value: 'GMF AeroAsia', label: 'GF : GMF AeroAsia' },
+            { value: 'BIFA Flying School', label: 'BA : BIFA Flying School ' },
+            {
+              value: 'Elang Lintas Indonesia',
+              label: 'EL : Elang Lintas Indonesia'
+            }
+          ]"
+          >Responsibility Office</app-option-input
+        >
+
+        <app-option-input
+          id="Audit_Type"
+          name="Audit_Type"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Audit_Type"
+          [options]="[
+            { value: 'procedure', label: 'Procedure' },
+            { value: 'product', label: 'Product' },
+            { value: 'surveillance', label: 'Surveillance' }
+          ]"
+          >Audit Type</app-option-input
+        >
+
+        <app-option-input
+          id="Audit_scope"
+          name="Audit_scope"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Audit_scope"
+          [options]="[
+            { value: 'authority', label: 'Authority' },
+            { value: 'internal', label: 'Internal' },
+            { value: 'external', label: 'External' },
+            { value: 'subcontractor', label: 'Subcontractor' }
+          ]"
+          >Audit Scope</app-option-input
+        >
+        <app-option-input
+          id="To_UIC"
+          name="To_UIC"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.To_UIC"
+          [options]="[
+            {
+              value: 'Chief Design Office',
+              label: 'Chief Design Office'
+            },
+            {
+              value: 'Chief Airworthiness Office',
+              label: 'Chief Airworthiness Office'
+            },
+            {
+              value: 'Chief Independent Monitoring',
+              label: 'Chief Independent Monitoring'
+            },
+            {
+              value: 'Head of DOA',
+              label: 'Head of DOA'
+            }
+          ]"
+          >To UIC</app-option-input
+        >
+        <app-text-input
+          id="Attention"
+          name="Attention"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Attention"
+          class=""
+          variant="primary"
+          >Attention</app-text-input
+        >
+        <app-text-area-input
+          id="Required_condition_reff"
+          name="Required_condition_reff"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Required_condition_reff"
+          class=""
+          >Require Condition and Reference</app-text-area-input
+        >
+        <app-option-input
+          id="Level_of_Finding"
+          name="Level_of_Finding"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Level_of_Finding"
+          [options]="[
+            { value: 'Level 1', label: 'Level 1' },
+            { value: 'Level 2', label: 'Level 2' },
+            { value: 'Level 3', label: 'Level 3' },
+            { value: 'Observation', label: 'Observation' }
+          ]"
+          >Level of Finding</app-option-input
+        >
+
+        <app-text-input
+          id="implementation_date"
+          name="implementation_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.implementation_date"
+          class=""
+          variant="primary"
+          >NCR Due Date</app-text-input
+        >
+        <app-option-input
+          id="Problem_Analysis"
+          name="Problem_Analysis"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.Problem_Analysis"
+          [options]="[
+            { value: 'Required', label: 'Required' },
+            { value: 'Not required', label: 'Not required' }
+          ]"
+          >Problem Analysis</app-option-input
+        >
+        <app-text-input
+          id="Answer_due_date"
+          name="Answer_due_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Answer_due_date"
+          class=""
+          variant="primary"
+          >Answer Due Date</app-text-input
+        >
+        <app-option-input
+          id="Issue_IAN"
+          name="Issue_IAN"
+          placeholder="Select an option"
+          [required]="false"
+          [(value)]="formData.Issue_IAN"
+          [options]="[
+            { value: 'Yes', label: 'Yes' },
+            { value: 'No', label: 'No' }
+          ]"
+          >Issue Immediate Action Notice (IAN)</app-option-input
+        >
+        <app-text-input
+          id="IAN_nbr"
+          name="IAN_nbr"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.IAN_nbr"
+          class=""
+          variant="primary"
+          >IAN No.</app-text-input
+        >
+        <app-text-area-input
+          id="Encountered_Condition"
+          name="Encountered_Condition"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Encountered_Condition"
+          class=""
+          >Encountered Condition</app-text-area-input
+        >
+        <app-text-input
+          id="Audited_by"
+          name="Audited_by"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Audited_by"
+          class=""
+          variant="primary"
+          >Audited by</app-text-input
+        >
+        <app-text-input
+          id="Audit_Date"
+          name="Audit_Date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Audit_Date"
+          class=""
+          variant="primary"
+          >Audit Date</app-text-input
+        >
+        <app-text-input
+          id="Acknowledge_by"
+          name="Acknowledge_by"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Acknowledge_by"
+          class=""
+          variant="primary"
+          >Acknowledge by</app-text-input
+        >
+        <app-text-input
+          id="Acknowledge_date"
+          name="Acknowledge_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.Acknowledge_date"
+          class=""
+          variant="primary"
+          >Acknowledge Date</app-text-input
+        >
+        <app-option-input
+          id="Status"
+          name="Status"
+          placeholder="Select an option"
+          [required]="false"
+          [(value)]="formData.Status"
+          [options]="[
+            { value: 'Open', label: 'Open' },
+            { value: 'Monitor', label: 'Monitor' },
+            { value: 'Closed', label: 'Closed' }
+          ]"
+          >Status</app-option-input
+        >
+        <app-text-area-input
+          id="Remark"
+          name="Remark"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.Remark"
+          class=""
+          >Remark</app-text-area-input
+        >
+
+        <app-text-input
+          id="times_occurred"
+          name="times_occurred"
+          type="text"
+          placeholder="Enter your data"
+          [required]="false"
+          [(value)]="formData.times_occurred"
+          class=""
+          variant="primary"
+          >Times Occurred</app-text-input
+        >
+        <app-button class="w-full mt-1" [color]="'primary'" type="submit"
+          >Submit</app-button
+        >
+      </form>
+    </div>
+  </div>
+</div>

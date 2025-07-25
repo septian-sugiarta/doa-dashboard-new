@@ -1,0 +1,9 @@
+select:invalid {
+  color: #c3c3c3;
+}
+
+.disabled {
+  pointer-events: none;
+  background-color: #f0f0f0;
+  color: #a0a0a0;
+}

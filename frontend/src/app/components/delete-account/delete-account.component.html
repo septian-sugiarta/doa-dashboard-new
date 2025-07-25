@@ -1,0 +1,65 @@
+<form
+  (submit)="$event.preventDefault(); onSubmit()"
+  action=""
+  class="flex flex-col overflow-y-auto flex-grow custom-scrollbar max-h-full"
+>
+  <app-text-input
+    id="email"
+    name="email"
+    type="email"
+    placeholder="Enter email"
+    [required]="true"
+    class=""
+    [(value)]="formData.email"
+    variant="secondary"
+    >Email</app-text-input
+  >
+
+  <app-text-input
+    id="password"
+    name="password"
+    type="password"
+    placeholder="Enter password"
+    [required]="true"
+    class="mt-4"
+    [(value)]="formData.password"
+    variant="secondary"
+    (input)="clearPasswordErrorMessage()"
+    >Password</app-text-input
+  >
+
+  <p
+    *ngIf="formData.password && formData.password.length < 8"
+    class="text-red-500 text-xs mt-1 pl-3"
+  >
+    Current password must be at least 8 characters.
+  </p>
+  <app-text-input
+    id="confirm_password"
+    name="confirm_password"
+    type="password"
+    placeholder="Enter confirm password"
+    [required]="true"
+    class="mt-4"
+    [(value)]="formData.confirm_password"
+    variant="secondary"
+    (input)="clearPasswordErrorMessage()"
+    >Confirm Password</app-text-input
+  >
+
+  <p
+    *ngIf="formData.confirm_password && formData.confirm_password.length < 8"
+    class="text-red-500 text-xs mt-1 pl-3"
+  >
+    Current password must be at least 8 characters.
+  </p>
+  <p *ngIf="errorMessage" class="text-red-500 text-xs mt-1 pl-3">
+    {{ errorMessage }}
+  </p>
+
+  <div class="mx-2">
+    <app-button class="w-full mt-5" [color]="'primary'" type="submit"
+      >Delete Account</app-button
+    >
+  </div>
+</form>

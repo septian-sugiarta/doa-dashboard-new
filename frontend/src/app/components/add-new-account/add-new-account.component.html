@@ -1,0 +1,99 @@
+<div class="w-full h-72">
+  <form
+    (submit)="$event.preventDefault(); onSubmit()"
+    action=""
+    class="flex flex-col overflow-y-auto flex-grow custom-scrollbar max-h-full"
+  >
+    <app-text-input
+      id="id_number"
+      name="id_number"
+      type="number"
+      placeholder="Enter your data"
+      [required]="true"
+      class="mt-4"
+      [(value)]="formData.id_number"
+      variant="secondary"
+      >ID Number</app-text-input
+    >
+    <app-text-input
+      id="name"
+      name="name"
+      type="text"
+      placeholder="Enter your data"
+      [required]="true"
+      class="mt-4"
+      [(value)]="formData.name"
+      variant="secondary"
+      >Name</app-text-input
+    >
+    <app-text-input
+      id="unit"
+      name="unit"
+      type="text"
+      placeholder="Enter your data"
+      [required]="true"
+      class="mt-4"
+      [(value)]="formData.unit"
+      variant="secondary"
+      >Unit</app-text-input
+    >
+    <app-text-input
+      id="role"
+      name="role"
+      type="text"
+      placeholder="Enter your data"
+      [required]="true"
+      class="mt-4"
+      [(value)]="formData.role"
+      variant="secondary"
+      >Role</app-text-input
+    >
+    <app-text-input
+      id="email"
+      name="email"
+      type="email"
+      placeholder="Enter your data"
+      [required]="true"
+      class="mt-4"
+      [(value)]="formData.email"
+      variant="secondary"
+      >Email</app-text-input
+    >
+
+    <app-text-input
+      id="username"
+      name="username"
+      type="text"
+      placeholder="Enter your data"
+      [required]="true"
+      class="mt-4"
+      [(value)]="formData.username"
+      variant="secondary"
+      >Username</app-text-input
+    >
+
+    <app-text-input
+      id="password"
+      name="password"
+      type="password"
+      placeholder="Enter your data"
+      [required]="true"
+      class="mt-4"
+      [(value)]="formData.password"
+      variant="secondary"
+      >Password</app-text-input
+    >
+
+    <p
+      *ngIf="formData.password && formData.password.length < 8"
+      class="text-red-500 text-xs mt-1 pl-3"
+    >
+      Password must be at least 8 characters.
+    </p>
+    <div class="mx-2">
+      <app-button class="w-full mt-5" [color]="'primary'" type="submit"
+        >Create Account</app-button
+      >
+    </div>
+  </form>
+</div>

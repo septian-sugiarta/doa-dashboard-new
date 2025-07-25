@@ -1,0 +1,127 @@
+<div class="container">
+  <div
+    class="w-full flex items-center justify-center sm:px-6 sm:py-8 p-4"
+    style="height: calc(100vh - 80px)"
+  >
+    <div class="bg-white rounded-lg p-8 w-full h-full flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-primary font-bold sm:text-2xl text-xl">
+          Audit Status Log
+        </h1>
+        <p class="text-xs text-red-500 font-medium">
+          * Indicates required question
+        </p>
+      </div>
+      <form
+        (submit)="$event.preventDefault(); onSubmit()"
+        action=""
+        class="flex flex-col gap-7 overflow-y-auto flex-grow custom-scrollbar"
+      >
+        <app-option-input
+          id="regulation_based"
+          name="regulation_based"
+          placeholder="Select an option"
+          [required]="true"
+          [(value)]="formData.regulation_based"
+          [options]="[
+            { value: 'DGCA', label: 'DGCA' },
+            { value: 'EASA', label: 'EASA' }
+          ]"
+          >Regulation Based</app-option-input
+        >
+        <app-text-input
+          id="doc_nbr"
+          name="doc_nbr"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.doc_nbr"
+          class=""
+          variant="primary"
+          >Doc. No</app-text-input
+        >
+        <app-text-input
+          id="statusLog_date "
+          name="statusLog_date "
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.statusLog_date"
+          class=""
+          variant="primary"
+          >Date</app-text-input
+        >
+
+        <app-text-area-input
+          id="subject"
+          name="subject"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.subject"
+          class=""
+          >Subject</app-text-area-input
+        >
+        <app-text-area-input
+          id="reason_of_issuance"
+          name="reason_of_issuance"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.reason_of_issuance"
+          class=""
+          >Reason of issuance</app-text-area-input
+        >
+
+        <app-text-input
+          id="prepared_by"
+          name="prepared_by"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.prepared_by"
+          class=""
+          variant="primary"
+          >Prepared by</app-text-input
+        >
+        <app-text-input
+          id="prepared_date"
+          name="prepared_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.prepared_date"
+          class=""
+          variant="primary"
+          >Prepared Date</app-text-input
+        >
+        <app-text-input
+          id="checked_by"
+          name="checked_by"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.checked_by"
+          class=""
+          variant="primary"
+          >Checked by</app-text-input
+        >
+        <app-text-input
+          id="checked_date"
+          name="checked_date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.checked_date"
+          class=""
+          variant="primary"
+          >Checked Date</app-text-input
+        >
+
+        <app-button class="w-full mt-1" [color]="'primary'" type="submit"
+          >Submit</app-button
+        >
+      </form>
+    </div>
+  </div>
+</div>

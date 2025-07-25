@@ -1,0 +1,337 @@
+<div class="container flex flex-col items-center justify-center py-8 gap-4">
+  <div
+    class="flex justify-center bg-white overflow-y-auto custom-scrollbar"
+    style="height: calc(100vh - 196px)"
+  >
+    <div
+      *ngIf="data && data.RegulationBased === 'EASA'"
+      class="bg-white w-[21cm] min-h-[29.5cm] border pt-[1.2cm] pl-[2.28cm] pr-[1.68cm]"
+      id="contentToConvert"
+    >
+      <div class="font-myriad leading-none">
+        <div class="min-w-full border-2 border-black text-[11pt]">
+          <div
+            class="grid grid-cols-[140px,300px,1fr] border-b-2 border-black h-16"
+          >
+            <div class="border-r-2 border-black">
+              <img
+                src="assets/images/gmf-doa-logo-2.png"
+                alt="logodoa"
+                class="h-6 mt-2 w-32"
+              />
+              <p class="text-center italic mt-2">EASA 21J.565</p>
+            </div>
+            <div
+              class="text-center font-semibold px-12 border-r-2 border-black"
+            >
+              NON CONFORMANCE REPORT (NCR)
+            </div>
+            <div
+              class="grid grid-cols-[90px,1fr,80px] px-[6px] gap-x-[8px] auto-rows-auto h-14"
+            >
+              <div class="">Audit Plan No.</div>
+              <div>:</div>
+              <div class="italic">{{ data.Audit_Plan_No }}</div>
+              <div class="">NCR no</div>
+              <div>:</div>
+              <div class="italic">{{ data.NCR_nbr }}</div>
+              <div class="">Issued date</div>
+              <div>:</div>
+              <div class="italic">{{ getFormattedIssuedDate() }}</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[340px,1fr] h-6 align-top">
+            <div class="px-[6px]">
+              <div>
+                Responsibility Office:
+                <span class="italic">{{ data.Responsible_Office }}</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div>
+                Audit Type:
+                <span class="italic">{{ data.Audit_Type }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="min-w-full border-2 border-black text-[11pt] mt-4">
+          <div
+            class="font-semibold px-[6px] text-sm align-top border-b-2 border-black h-8"
+          >
+            Step 1. INITIAL
+          </div>
+          <div class="px-[6px] mt-3">Require Condition and Reference:</div>
+          <div class="px-[6px] mt-1 italic">
+            {{ data.Required_condition_reff }}
+          </div>
+          <div class="h-8 border-b-2 border-black"></div>
+          <div
+            class="grid grid-cols-[1fr,290px,1fr] border-b-2 border-black h-10 gap-2 items-start"
+          >
+            <div class="pl-[6px]">
+              <div>
+                Level of Finding:
+                <span class="italic">{{ data.Level_of_Finding }}</span>
+              </div>
+            </div>
+            <div
+              class="text-center flex items-center justify-center gap-2 align-top"
+            >
+              <div>Problem Analysis:</div>
+              <div class="flex items-center justify-center gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-3"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.Problem_Analysis === 'Not required'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">required</span>
+              </div>
+              <div class="flex items-center justify-center gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-3"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.Problem_Analysis === 'Required'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">not required</span>
+              </div>
+            </div>
+            <div class="pr-[6px]">
+              <div>
+                Answer Due Date
+                <span class="italic">{{ getFormattedAnswerDueDate() }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px] mt-3">Encountered Condition:</div>
+          <div class="px-[6px] mt-1 italic">
+            {{ data.Encountered_Condition }}
+          </div>
+          <div class="h-8 border-b-2 border-black"></div>
+          <div class="grid grid-cols-[345px,1fr] border-b-2 border-black">
+            <div class="px-[6px]">
+              <div>
+                Originator:
+                <span class="italic">{{ data.Audited_by }}</span>
+              </div>
+              <div class="h-12"></div>
+              <div>
+                Date:
+                <span class="italic">{{ getFormattedAuditDate() }}</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">Accepted by / Date</div>
+              <div class="h-12"></div>
+              <div class="h-6 italic">
+                {{ data.Acknowledge_by
+                }}<span> / {{ getFormattedAcknowledgeDate() }}</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="font-semibold px-[6px] text-sm align-top border-b-2 border-black h-8"
+          >
+            Step 2. REPLY
+          </div>
+          <div class="px-[6px] mt-3">Root Cause the Problem:</div>
+          <div class="px-[6px] mt-1 italic">
+            This section was not correctly reviewed, and hence such miss was
+            present.
+          </div>
+          <div class="px-[6px] mt-3">Corrective Action:</div>
+          <div class="px-[6px] mt-1 italic">This section will be revised.</div>
+          <div class="px-[6px] mt-3">Preventive Action:</div>
+          <div class="px-[6px] mt-1 italic">
+            AO will do better to review the DOH.
+          </div>
+          <div class="h-8 border-b-2 border-black"></div>
+          <div class="grid grid-cols-[345px,1fr] border-b-2 border-black">
+            <div class="px-[6px] border-r-2 border-black">
+              <div>
+                Implementation Date:
+                <span class="italic">31-Jan-2025</span>
+              </div>
+
+              <div>
+                Auditee Personal:
+                <span class="italic">I G Agung Aditya Jaya</span>
+              </div>
+              <div class="h-12"></div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">Accepted by Auditor / Date</div>
+
+              <div class="h-6 italic">
+                Edy Noerachman <span> / 27-Jun-2024</span>
+              </div>
+              <div class="h-12"></div>
+            </div>
+          </div>
+          <div
+            class="font-semibold px-[6px] text-sm align-top border-b-2 border-black h-8"
+          >
+            Step 3. FOLLOW UP RESULT
+            <span class="font-normal">(Filled by Auditor)</span>
+          </div>
+          <div class="grid grid-cols-[440px,1fr] border-b-2 border-black">
+            <div class="px-[6px] border-r-2 border-black">
+              <div class="flex items-start gap-14">
+                <div>Corrective Actions:</div>
+                <div class="flex items-center justify-center gap-1">
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-3"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">Close</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-[240px,auto] gap-6">
+                <div class="flex items-center gap-1 justify-end">
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-3"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">Effective</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-3"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">Not Effective</span>
+                </div>
+              </div>
+              <div class="h-12"></div>
+              <div class="h-6">
+                Refer to Verification Sheet No.:
+                <span class="italic"></span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">New NCR Issue Number:</div>
+
+              <div class="h-6 italic">
+                <span> </span>
+              </div>
+              <div class="h-12"></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[280px,1fr]">
+            <div class="px-[6px]">
+              <div>
+                Approve by:
+                <span class="italic"></span>
+              </div>
+
+              <div class="h-16"></div>
+            </div>
+            <div class="px-[6px]">
+              <div>
+                Date:
+                <span class="italic"></span>
+              </div>
+              <div class="h-16"></div>
+            </div>
+          </div>
+        </div>
+        <p class="text-[15px] px-[6px]">Form No. GMF/IM/E-002 R3</p>
+      </div>
+    </div>
+  </div>
+  <app-button (click)="convertToPDF()">Download</app-button>
+</div>

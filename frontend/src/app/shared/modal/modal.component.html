@@ -1,0 +1,28 @@
+<div
+  class="fixed inset-0 bg-primary/30 flex justify-center items-center z-50"
+  [ngClass]="[extraClasses]"
+  *ngIf="isOpen"
+  (click)="closeModal()"
+>
+  <div
+    class="bg-white p-6 rounded-lg shadow-lg sm:w-1/3 w-60"
+    (click)="$event.stopPropagation()"
+  >
+    <ng-content></ng-content>
+
+    <div class="mt-4 flex justify-between gap-4 items-center">
+      <button
+        class="bg-white sm:text-sm text-xs text-primary px-4 py-2 rounded-full border-[1px] border-primary"
+        (click)="closeModal()"
+      >
+        No, cancel
+      </button>
+      <button
+        class="bg-red-600 sm:text-sm text-xs text-white px-4 py-2 rounded-full"
+        (click)="confirmAction()"
+      >
+        Yes, I'm sure
+      </button>
+    </div>
+  </div>
+</div>

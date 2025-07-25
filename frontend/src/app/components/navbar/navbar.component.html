@@ -1,0 +1,215 @@
+<nav class="bg-primary fixed z-50 w-full top-0 left-0 right-0">
+  <div class="container flex items-center gap-12 h-20 justify-between">
+    <a href="/"
+      ><img
+        src="assets/images/gmf-doa-logo.png"
+        alt="logodoa"
+        class="md:h-16 h-12"
+    /></a>
+    <ul class="text-white font-medium text-sm items-center hidden md:flex">
+      <li><a class="pr-8" href="">Home</a></li>
+      <li *ngIf="userRole === 'admin' || userRole === 'IM'">
+        <a class="pr-3" href="/account-admin">Account</a>
+      </li>
+      <li *ngIf="userRole !== 'admin' && userRole !== 'IM'">
+        <a class="pr-3" href="/account">Account</a>
+      </li>
+      <li class="relative group">
+        <a class="flex items-center gap-2 pl-5 cursor-pointer">
+          <span>Audit</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="transform transition-transform duration-300 h-6 w-6 group-hover:rotate-180"
+          >
+            <path fill="currentColor" d="m7 10l5 5l5-5z" />
+          </svg>
+        </a>
+        <ul
+          class="absolute bg-white shadow-xl w-72 p-2 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300"
+        >
+          <li class="hover:bg-primary [&_a]:hover:text-white rounded-lg">
+            <a class="text-primary px-3 py-1 block w-full" href="/coming-soon"
+              >Audit Plan</a
+            >
+          </li>
+          <li class="hover:bg-primary [&_a]:hover:text-white rounded-lg">
+            <a class="text-primary px-3 py-1 block w-full" href="/ncr-list"
+              >Non-Conformance Report (NCR)</a
+            >
+          </li>
+          <li class="hover:bg-primary [&_a]:hover:text-white rounded-lg">
+            <a
+              class="text-primary px-3 py-1 block w-full"
+              href="/action-log-list"
+              >Action Log</a
+            >
+          </li>
+          <li class="hover:bg-primary [&_a]:hover:text-white rounded-lg">
+            <a
+              class="text-primary px-3 py-1 block w-full"
+              href="/audit-status-log-list"
+              >Audit Status Log</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li><a class="pl-8" href="/ior-list">Occurence</a></li>
+      <li><a class="pl-8" href="/coming-soon">Personel</a></li>
+      <li><a class="pl-8" href="/coming-soon">Project</a></li>
+      <li><a class="pl-8" href="/coming-soon">Link</a></li>
+    </ul>
+
+    <button (click)="openLogoutModal()" class="hidden md:block">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        class="text-white w-6 h-6"
+      >
+        <path
+          fill="currentColor"
+          d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h7v2H5v14h7v2zm11-4l-1.375-1.45l2.55-2.55H9v-2h8.175l-2.55-2.55L16 7l5 5z"
+        />
+      </svg>
+    </button>
+
+    <app-modal
+      [isOpen]="isModalOpen"
+      (closeModalEvent)="closeModal()"
+      (confirmActionEvent)="confirmLogout()"
+      [extraClasses]="'bg-primary/5'"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-2 -3 24 24"
+        class="text-red-600 w-16 h-16 mx-auto mb-2"
+      >
+        <path
+          fill="currentColor"
+          d="m12.8 1.613l6.701 11.161c.963 1.603.49 3.712-1.057 4.71a3.2 3.2 0 0 1-1.743.516H3.298C1.477 18 0 16.47 0 14.581c0-.639.173-1.264.498-1.807L7.2 1.613C8.162.01 10.196-.481 11.743.517c.428.276.79.651 1.057 1.096M10 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2m0-9a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V6a1 1 0 0 0-1-1"
+        />
+      </svg>
+      <h2 class="text-lg font-semibold text-center text-primary">Log Out?</h2>
+      <h4 class="text-gray-500 text-sm text-center mt-2">
+        Are you sure you want to log out? This action will sign you out from
+        your account.
+      </h4>
+    </app-modal>
+
+    <button (click)="toggleMenu()" class="md:hidden text-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        class="w-8 h-8"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
+
+    <div
+      *ngIf="isMenuOpen"
+      class="fixed top-0 right-0 h-full w-2/3 bg-primary p-10 z-20 transition-transform duration-500 ease-in-out transform"
+      [ngClass]="{
+        'translate-x-0': isMenuOpen,
+        'translate-x-full': !isMenuOpen
+      }"
+    >
+      <ul class="flex flex-col gap-4">
+        <li>
+          <a class="text-sm text-white py-2 text-center" href="/">Home</a>
+        </li>
+
+        <li *ngIf="userRole === 'admin' || userRole === 'IM'">
+          <a class="text-sm text-white py-2 text-center" href="/account-admin"
+            >Account</a
+          >
+        </li>
+        <li *ngIf="userRole !== 'admin' && userRole !== 'IM'">
+          <a class="text-sm text-white py-2 text-center" href="/account"
+            >Account</a
+          >
+        </li>
+        <li class="relative">
+          <a
+            class="text-sm text-white py-2 cursor-pointer text-center"
+            (click)="toggleAuditDropdown()"
+          >
+            Audit
+          </a>
+          <ul
+            *ngIf="isAuditOpen"
+            class="absolute top-5 w-[170px] bg-white text-black shadow-lg p-4 mt-2 rounded-md transition-all duration-300"
+          >
+            <li>
+              <a
+                class="text-sm text-primary py-1 text-center"
+                href="/coming-soon"
+                >Audit Plan</a
+              >
+            </li>
+            <li>
+              <a class="text-sm text-primary py-1 text-center" href="/ncr-list"
+                >NCR</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-sm text-primary py-1 text-center"
+                href="/action-log-list"
+                >Action Log</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-sm text-primary py-1 text-center"
+                href="/audit-status-log-list"
+                >Audit Status Log</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="text-sm text-white py-2 text-center" href="/ior-list"
+            >Occurrence</a
+          >
+        </li>
+        <li>
+          <a class="text-sm text-white py-2 text-center" href="/coming-soon"
+            >Personnel</a
+          >
+        </li>
+        <li>
+          <a class="text-sm text-white py-2 text-center" href="/coming-soon"
+            >Project</a
+          >
+        </li>
+        <li>
+          <a class="text-sm text-white py-2 text-center" href="/coming-soon"
+            >Link</a
+          >
+        </li>
+
+        <li>
+          <app-button
+            (click)="openLogoutModal()"
+            class="w-full"
+            [color]="'secondary'"
+            >Log Out</app-button
+          >
+        </li>
+      </ul>
+    </div>
+    <div
+      *ngIf="isMenuOpen"
+      class="fixed inset-0 bg-black/50 z-10 transition-opacity duration-500"
+      (click)="toggleMenu()"
+    ></div>
+  </div>
+</nav>

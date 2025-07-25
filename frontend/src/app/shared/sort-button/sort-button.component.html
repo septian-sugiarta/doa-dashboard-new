@@ -1,0 +1,79 @@
+<ng-container *ngIf="sortState === 0">
+  <button (click)="toggleSort()" class="flex items-center gap-1 text-primary">
+    <p class="text-xs font-semibold text-primary text-start">
+      <ng-container *ngIf="content">{{ content }}</ng-container>
+    </p>
+    <div class="w-5 flex items-center justify-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        class="w-4 h-4"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m21 16l-4 4l-4-4m4 4V4M3 8l4-4l4 4M7 4v16"
+        />
+      </svg>
+    </div>
+  </button>
+</ng-container>
+
+<ng-container *ngIf="sortState === 1">
+  <button (click)="toggleSort()" class="flex items-center gap-1 text-primary">
+    <p class="text-xs font-semibold text-primary text-start">
+      <ng-container *ngIf="content">{{ content }}</ng-container>
+    </p>
+    <div class="w-5 flex items-center justify-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        class="h-[18px] w-[18px] rotate-180"
+      >
+        <path
+          fill="currentColor"
+          fill-rule="evenodd"
+          d="M12 5.714a1 1 0 0 1 1 1v12.5a1 1 0 0 1-2 0v-12.5a1 1 0 0 1 1-1"
+          clip-rule="evenodd"
+        />
+        <path
+          fill="currentColor"
+          fill-rule="evenodd"
+          d="M12 4.214a1 1 0 0 1 .707.293l4.5 4.5a1 1 0 0 1-1.414 1.415L12 6.628l-3.793 3.793a1 1 0 0 1-1.414-1.415l4.5-4.5A1 1 0 0 1 12 4.214"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+  </button>
+</ng-container>
+
+<ng-container *ngIf="sortState === 2">
+  <button (click)="toggleSort()" class="flex items-center gap-1 text-primary">
+    <p class="text-xs font-semibold text-primary text-start">
+      <ng-container *ngIf="content">{{ content }}</ng-container>
+    </p>
+    <div class="w-5 flex items-center justify-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        class="h-[18px] w-[18px]"
+      >
+        <path
+          fill="currentColor"
+          fill-rule="evenodd"
+          d="M12 5.714a1 1 0 0 1 1 1v12.5a1 1 0 0 1-2 0v-12.5a1 1 0 0 1 1-1"
+          clip-rule="evenodd"
+        />
+        <path
+          fill="currentColor"
+          fill-rule="evenodd"
+          d="M12 4.214a1 1 0 0 1 .707.293l4.5 4.5a1 1 0 0 1-1.414 1.415L12 6.628l-3.793 3.793a1 1 0 0 1-1.414-1.415l4.5-4.5A1 1 0 0 1 12 4.214"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+  </button>
+</ng-container>

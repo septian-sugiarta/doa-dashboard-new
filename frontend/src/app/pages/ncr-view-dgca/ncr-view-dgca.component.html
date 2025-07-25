@@ -1,0 +1,221 @@
+<div class="container flex flex-col items-center justify-center py-8 gap-4">
+  <div
+    class="flex justify-center bg-white overflow-y-auto custom-scrollbar"
+    style="height: calc(100vh - 196px)"
+  >
+    <div
+      *ngIf="data && data.RegulationBased === 'DGCA'"
+      class="bg-white w-[21cm] min-h-[29.5cm] border pt-[0.87cm] pl-[1.77cm] pr-[1.27cm]"
+      id="contentToConvert"
+    >
+      <img
+        src="assets/images/gmf-doa-logo-2.png"
+        alt="logodoa"
+        class="h-[65px] pl-[160px] pt-[2.5px] w-[525px]"
+      />
+      <div class="font-myriad leading-none">
+        <div class="min-w-full border-2 border-black text-[11pt]">
+          <div class="grid grid-cols-[385px,1fr] border-b-2 border-black">
+            <div
+              class="border-r-2 border-black text-center font-semibold text-[16pt] align-top px-10 h-[67px]"
+            >
+              NON-CONFORMANCE REPORT (NCR)
+            </div>
+            <div
+              class="grid grid-cols-[90px,1fr,167px] px-[6px] gap-x-[8px] auto-rows-auto h-14"
+            >
+              <div class="">Audit Plan No.</div>
+              <div>:</div>
+              <div class="italic">{{ data.Audit_Plan_No }}</div>
+              <div class="">NCR no</div>
+              <div>:</div>
+              <div class="italic">NCR-06-2024</div>
+              <div class="">Issued date</div>
+              <div>:</div>
+              <div class="italic">16 October 2024</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[385px,1fr] border-b-2 border-black">
+            <div class="px-[6px] border-r-2 border-black">
+              <div class="mb-6">
+                Area / Office / Company:
+                <span class="italic">{{ data.Responsible_Office }}</span>
+              </div>
+              <div class="h-6">
+                Audit Type:
+                <span class="italic">{{ data.Audit_Type }}</span>
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-[25px,1fr,232px] px-[6px] gap-x-[8px] auto-rows-auto h-9"
+            >
+              <div class="">To</div>
+              <div>:</div>
+              <div class="italic">{{ data.To_UIC }}</div>
+              <div class="">Attn.</div>
+              <div>:</div>
+              <div class="italic">{{ data.Attention }}</div>
+            </div>
+          </div>
+          <div class="px-[6px] border-b-2 border-black h-6 align-top">
+            Step 1 (to filled by auditor within 5 days after end of audit,
+            unless Immediate Action Notice is required)
+          </div>
+          <div class="px-[6px]">Regulation requirement(s) and Reference:</div>
+          <div class="px-[6px] mt-1 italic">
+            {{ data.Required_condition_reff }}
+          </div>
+          <div class="h-8 border-b-2 border-black"></div>
+          <div class="grid grid-cols-[243px,1fr] border-b-2 border-black">
+            <div class="px-[6px]">
+              <div class="mb-1">
+                Level of Finding:
+                <span class="italic">{{ data.Level_of_Finding }}</span>
+              </div>
+              <div class="h-6">
+                NCR due date:
+                <span class="italic">{{ getFormattedIssuedDate() }}</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="mb-1 pl-10">
+                Problem Analysis:
+                <span
+                  [ngClass]="{
+                    'line-through': data.Problem_Analysis === 'Not required'
+                  }"
+                  >required</span
+                >
+                <span> / </span>
+                <span
+                  [ngClass]="{
+                    'line-through': data.Problem_Analysis === 'Required'
+                  }"
+                  >not required</span
+                >
+              </div>
+
+              <div class="h-6">
+                Issue Immediate Action Notice (IAN):
+                <span [ngClass]="{ 'line-through': data.Issue_IAN === 'Yes' }"
+                  >No</span
+                >
+
+                <span> / </span>
+                <span [ngClass]="{ 'line-through': data.Issue_IAN === 'No' }"
+                  >Yes</span
+                >
+
+                <span [ngClass]="{ 'line-through': data.Issue_IAN === 'No' }"
+                  >IAN No.:</span
+                >
+
+                <span [ngClass]="{ hidden: data.Issue_IAN === 'No' }">{{
+                  data.IAN_nbr
+                }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px]">Encountered Condition:</div>
+          <div class="px-[6px] mt-1 italic">
+            {{ data.Encountered_Condition }}
+          </div>
+          <div class="h-8 border-b-2 border-black"></div>
+          <div class="grid grid-cols-[345px,1fr] border-b-2 border-black">
+            <div class="px-[6px] border-r-2 border-black">
+              <div class="">Audited by / Date</div>
+              <div class="h-12"></div>
+              <div class="h-6 italic">
+                {{ data.Audited_by }}
+                <span> / {{ getFormattedAuditDate() }}</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">Acknowledged by Auditee / Date</div>
+              <div class="h-12"></div>
+              <div class="h-6 italic">
+                {{ data.Acknowledge_by }}
+                <span> / {{ getFormattedAcknowledgeDate() }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px] border-b-2 border-black h-6 align-top">
+            Step 2 (to be filled by auditee within 14 days after NCR is issued)
+          </div>
+          <div class="px-[6px]">Root Cause of the Problem</div>
+          <div class="px-[6px] mt-1 italic">{{ data.RCA_problem }}</div>
+          <div class="h-8 border-b-2 border-black"></div>
+          <div class="grid grid-cols-[345px,1fr] border-b-2 border-black">
+            <div class="px-[6px] border-r-2 border-black">
+              <div class="">Identified by Auditee / Date</div>
+              <div class="h-12"></div>
+              <div class="h-6 italic">
+                Imanuddin Yahya <span> / 30 Oktober 2024</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">Accepted by Auditor / Date</div>
+              <div class="h-12"></div>
+              <div class="h-6 italic">
+                Edy Noerachman <span> / 31 Oktober 2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px] border-b-2 border-black h-6 align-top">
+            Step 3 (to be filled by auditee within 14 days after NCR is issued)
+          </div>
+          <div class="px-[6px]">Recommended Corrective Action(s):</div>
+          <div class="px-[6px] mt-1 italic">
+            Since the intended responsible person for the issuance of Repair
+            Approval Sheet form is the Chief of Airworthiness, the relevant
+            section in DP-201-01 will be revised accordingly.
+          </div>
+          <div class="h-8 border-b-2 border-black"></div>
+          <div class="grid grid-cols-[345px,1fr] border-b-2 border-black">
+            <div class="px-[6px] border-r-2 border-black">
+              <div class="">Proposed by Auditee / Date</div>
+              <div class="h-12"></div>
+              <div class="h-6 italic">
+                Imanuddin Yahya <span> / 30 Oktober 2024</span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">
+                Accepted by Chief of Independent Monitoring / Date
+              </div>
+              <div class="h-12"></div>
+              <div class="h-6 italic">
+                Edy Noerachman <span> / 31 Oktober 2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px] border-b-2 border-black h-6 align-top">
+            Step 4 (to filled by auditor within required time according to level
+            of finding)
+          </div>
+
+          <div class="grid grid-cols-[345px,1fr]">
+            <div class="px-[6px] border-r-2 border-black">
+              <div class="">Corrective Actions and Implementation Date:</div>
+              <div class="h-12"></div>
+              <div class="h-6 italic">
+                <span> </span>
+              </div>
+            </div>
+            <div class="px-[6px]">
+              <div class="">
+                Verified by Chief of Independent Monitoring: Date :
+              </div>
+              <div class="h-12"></div>
+              <div class="h-6 italic">
+                <span>{{ data.Verified_Chief_IM }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-[15px] px-[6px]">Form No.: GMF/IM-002 R3</p>
+      </div>
+    </div>
+  </div>
+  <app-button (click)="convertToPDF()">Download</app-button>
+</div>

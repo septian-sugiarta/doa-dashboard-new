@@ -1,0 +1,3 @@
+input[type="date"]:invalid {
+  color: #c3c3c3;
+}

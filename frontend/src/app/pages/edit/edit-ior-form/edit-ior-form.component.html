@@ -1,0 +1,273 @@
+<div class="container">
+  <div
+    class="w-full flex items-center justify-center sm:px-6 sm:py-8 p-4"
+    style="height: calc(100vh - 80px)"
+  >
+    <div class="bg-white rounded-lg p-8 w-full h-full flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-primary font-bold sm:text-2xl text-xl">
+          Internal Occurence Report (IOR) Form
+        </h1>
+        <p class="text-xs text-red-500 font-medium">
+          * Indicates required question
+        </p>
+      </div>
+      <form
+        (submit)="$event.preventDefault(); onSubmit()"
+        action=""
+        class="flex flex-col gap-7 overflow-y-auto flex-grow custom-scrollbar"
+      >
+        <app-text-area-input
+          id="subject"
+          name="subject"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.subject_ior"
+          class=""
+          >Subject</app-text-area-input
+        >
+
+        <app-text-input
+          id="Occurrence Report No."
+          name="Occurrence Report No."
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          class=""
+          [(value)]="formData.occur_nbr"
+          variant="primary"
+          >Occurrence Report No.</app-text-input
+        >
+        <app-text-input
+          id="Occurrence Date"
+          name="Occurrence Date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.occur_date"
+          class=""
+          variant="primary"
+          >Occurrence Date</app-text-input
+        >
+        <app-text-input
+          id="Reference"
+          name="Reference"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          class=""
+          [(value)]="formData.reference_ior"
+          variant="primary"
+          >Reference</app-text-input
+        >
+        <app-text-input
+          id="To UIC"
+          name="To UIC"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          class=""
+          [(value)]="formData.to_uic"
+          variant="primary"
+          >To UIC</app-text-input
+        >
+        <app-text-input
+          id="CC UIC"
+          name="CC UIC"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          class=""
+          [(value)]="formData.cc_uic"
+          variant="primary"
+          >CC UIC</app-text-input
+        >
+
+        <app-option-input
+          id="category"
+          name="category"
+          placeholder="Select an option"
+          [required]="true"
+          [options]="[
+            { value: 'DOA Management', label: 'DOA Management' },
+            { value: 'Procedure', label: 'Procedure' },
+            { value: 'Document', label: 'Document' },
+            { value: 'Personnel', label: 'Personnel' },
+            { value: 'Facility', label: 'Facility' },
+            {
+              value: 'Partner or Subcontractor',
+              label: 'Partner or Subcontractor'
+            },
+            { value: 'Material', label: 'Material' },
+            {
+              value: 'Information Technology',
+              label: 'Information Technology'
+            },
+            { value: 'Training', label: 'Training' },
+            { value: 'Others', label: 'Others' }
+          ]"
+          [(value)]="formData.category_occur"
+          >Category</app-option-input
+        >
+
+        <app-text-input
+          id="Type or P/N"
+          name="Type or P/N"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          class=""
+          variant="primary"
+          [(value)]="formData.type_or_pnbr"
+          >Type or P/N</app-text-input
+        >
+
+        <app-checkbox
+          label="Level Type"
+          [checkboxes]="[
+            { id: 'Aircraft', label: 'Aircraft', checked: false },
+            { id: 'Engine', label: 'Engine', checked: false },
+            { id: 'APU', label: 'APU', checked: false },
+            { id: 'Others', label: 'Others', checked: false }
+          ]"
+          [required]="true"
+          [(selectedValues)]="formData.level_type"
+          >Level Type</app-checkbox
+        >
+
+        <app-text-area-input
+          id="Detail of Hazard or Occurrence"
+          name="Detail of Hazard or Occurrence"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          [(value)]="formData.detail_occurance"
+          class=""
+          >Detail of Hazard or Occurrence</app-text-area-input
+        >
+        <app-text-input
+          id="Reported by"
+          name="Reported by"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          class=""
+          [(value)]="formData.Reportedby"
+          variant="primary"
+          >Reported by</app-text-input
+        >
+        <app-text-input
+          id="Reported UIC"
+          name="Reported UIC"
+          type="text"
+          placeholder="Enter your data"
+          [required]="true"
+          class=""
+          [(value)]="formData.reporter_uic"
+          variant="primary"
+          >Reported UIC</app-text-input
+        >
+        <app-text-input
+          id="Report Date"
+          name="Report Date"
+          type="date"
+          placeholder="Enter your data"
+          [required]="true"
+          class=""
+          [(value)]="formData.report_date"
+          variant="primary"
+          >Report Date</app-text-input
+        >
+
+        <app-checkbox
+          label="Reporter Identity"
+          [checkboxes]="[
+            { id: 'Shown', label: 'Shown', checked: false },
+            { id: 'Hidden', label: 'Hidden', checked: false }
+          ]"
+          [(selectedValues)]="formData.reporter_identity"
+          [required]="false"
+          >Reporter Identity</app-checkbox
+        >
+        <app-checkbox
+          label="Data Reference"
+          [checkboxes]="[
+            { id: 'Yes', label: 'Yes', checked: false },
+            { id: 'No', label: 'No', checked: false }
+          ]"
+          [(selectedValues)]="formData.data_reference"
+          [required]="false"
+          >Data Reference</app-checkbox
+        >
+        <app-checkbox
+          label="Hirac Process"
+          [checkboxes]="[
+            { id: 'Yes', label: 'Yes', checked: false },
+            { id: 'No', label: 'No', checked: false }
+          ]"
+          [(selectedValues)]="formData.hirac_process"
+          [required]="false"
+          >Hirac Process</app-checkbox
+        >
+        <app-option-input
+          id="Initial Probability"
+          name="Initial Probability"
+          placeholder="Select an option"
+          [required]="false"
+          [options]="[
+            { value: 'procedure', label: 'Procedure' },
+            { value: 'product', label: 'Product' },
+            { value: 'surveillance', label: 'Surveillance' }
+          ]"
+          [(value)]="formData.Initial_probability"
+          >Initial Probability?</app-option-input
+        >
+        <app-option-input
+          id="Initial Severity"
+          name="Initial Severity"
+          placeholder="Select an option"
+          [required]="false"
+          [options]="[
+            {
+              value: 'Chief Design Office',
+              label: 'Chief Design Office'
+            },
+            {
+              value: 'Chief Airworthiness Office',
+              label: 'Chief Airworthiness Office'
+            },
+            {
+              value: 'Chief Independent Monitoring',
+              label: 'Chief Independent Monitoring'
+            },
+            {
+              value: 'Head of DOA',
+              label: 'Head of DOA'
+            }
+          ]"
+          [(value)]="formData.initial_severity"
+          >Initial Severity?</app-option-input
+        >
+        <app-option-input
+          id="Initial Risk Index"
+          name="Initial Risk Index"
+          placeholder="Select an option"
+          [required]="false"
+          [options]="[
+            { value: 'authority', label: 'Authority' },
+            { value: 'internal', label: 'Internal' },
+            { value: 'external', label: 'External' },
+            { value: 'subcontractor', label: 'Subcontractor' }
+          ]"
+          [(value)]="formData.initial_riskindex"
+          >Initial Risk Index?</app-option-input
+        >
+
+        <app-button class="w-full mt-1" [color]="'primary'" type="submit"
+          >Submit</app-button
+        >
+      </form>
+    </div>
+  </div>
+</div>

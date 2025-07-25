@@ -1,0 +1,1156 @@
+<div class="container flex flex-col items-center justify-center py-8 gap-4">
+  <div
+    class="flex justify-center bg-white overflow-y-auto custom-scrollbar"
+    style="height: calc(100vh - 196px)"
+  >
+    <div
+      *ngIf="data"
+      class="bg-white w-[21cm] min-h-[29.5cm] border pt-[1.70cm] pl-[1cm] pr-[0.9cm]"
+      id="contentToConvert"
+    >
+      <div class="font-myriad leading-none">
+        <div class="min-w-full border-[1px] border-black text-[11pt]">
+          <div
+            class="grid grid-cols-[282px_1fr] h-[67px] border-b-[1px] border-black"
+          >
+            <div class="border-r-[1px] border-black items-center flex">
+              <img
+                src="assets/images/gmf-doa-logo-2.png"
+                alt="logodoa"
+                class="h-[40px] mx-auto"
+              />
+            </div>
+            <div class="text-center font-semibold text-2xl pt-2 pb-2">
+              Internal Occurence Report
+            </div>
+          </div>
+          <div class="grid grid-cols-2 border-black border-b-[1px]">
+            <div class="px-[6px] border-r-[1px] border-black border-b-[1px]">
+              <div class="pt-1">Subject:</div>
+              <div class="mt-1 pb-3">
+                {{ data.subject_ior }}
+              </div>
+            </div>
+            <div class="">
+              <div
+                class="px-[6px] text-center border-b-[1px] border-black pt-1 pb-3"
+              >
+                Category
+              </div>
+              <div class="grid grid-cols-[160px_1fr] align-top">
+                <div
+                  class="px-[6px] border-r-[1px] border-black border-b-[1px] pt-1 pb-3 flex gap-1"
+                >
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                      [ngClass]="{
+                        hidden: data.category_occur !== 'DOA Management'
+                      }"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">DOA Management</span>
+                </div>
+                <div
+                  class="px-[6px] border-black border-b-[1px] pt-1 pb-3 flex gap-1"
+                >
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                      [ngClass]="{
+                        hidden:
+                          data.category_occur !== 'Partner or Subcontractor'
+                      }"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">Partner or Subcontractor</span>
+                </div>
+                <div
+                  class="px-[6px] border-r-[1px] border-black border-b-[1px] pt-1 pb-3 flex gap-1"
+                >
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                      [ngClass]="{
+                        hidden: data.category_occur !== 'Procedure'
+                      }"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">Procedure</span>
+                </div>
+                <div
+                  class="px-[6px] border-black border-b-[1px] pt-1 pb-3 flex gap-1"
+                >
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                      [ngClass]="{
+                        hidden: data.category_occur !== 'Material'
+                      }"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">Material</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="border-black border-r-[1px] border-b-[1px] px-[6px] pt-1 pb-3"
+            >
+              Occurence report no:
+              <span class="">{{ data.occur_nbr }}</span>
+            </div>
+            <div class="grid grid-cols-[160px_1fr]">
+              <div
+                class="px-[6px] border-black border-b-[1px] pt-1 pb-3 flex gap-1 border-r-[1px]"
+              >
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Document'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Document</span>
+              </div>
+              <div
+                class="px-[6px] border-black border-b-[1px] pt-1 pb-3 flex gap-1"
+              >
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Information Technology'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Information Technology</span>
+              </div>
+            </div>
+            <div
+              class="border-black border-r-[1px] border-b-[1px] px-[6px] pt-1 pb-3"
+            >
+              Occurence date:
+              <span class="">{{ getFormattedOccurDate() }}</span>
+            </div>
+            <div class="grid grid-cols-[160px_1fr]">
+              <div
+                class="px-[6px] border-black border-b-[1px] pt-1 pb-3 flex gap-1 border-r-[1px]"
+              >
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Personnel'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Personnel</span>
+              </div>
+              <div
+                class="px-[6px] border-black border-b-[1px] pt-1 pb-3 flex gap-1"
+              >
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Training'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Training</span>
+              </div>
+            </div>
+            <div class="px-[6px] border-r-[1px] border-black border-b-[1px]">
+              <div class="pt-1">Reference:</div>
+              <div class="pb-3">{{ data.reference_ior }}</div>
+            </div>
+            <div class="grid grid-cols-[160px_1fr]">
+              <div
+                class="px-[6px] border-black border-b-[1px] pt-1 pb-3 flex gap-1 border-r-[1px]"
+              >
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Facility'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Facility</span>
+              </div>
+              <div
+                class="px-[6px] border-black border-b-[1px] pt-1 pb-3 flex gap-1"
+              >
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Others'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Others</span>
+              </div>
+              <div
+                class="pt-1 pb-3 border-black border-b-[1px] px-[6px] col-span-2"
+              >
+                TYPE or P/N:
+                <span class="px-[6px]">{{ data.type_or_pnbr }}</span>
+              </div>
+            </div>
+            <div class="flex border-r-[1px] border-black border-b-[1px]">
+              <div
+                class="w-[90px] border-r-[1px] border-black px-[6px] pt-1 pb-3"
+              >
+                To:
+              </div>
+              <div class="px-[6px] pt-1 pb-3">{{ data.to_uic }}</div>
+            </div>
+            <div class="text-center border-b-[1px] border-black pt-1 pb-3">
+              Level Type
+            </div>
+            <div class="flex border-r-[1px] border-black">
+              <div
+                class="w-[90px] border-r-[1px] border-black px-[6px] pt-1 pb-3"
+              >
+                Copy:
+              </div>
+              <div class="px-[6px] pt-1 pb-3">{{ data.cc_uic }}</div>
+            </div>
+            <div class="grid grid-cols-4 px-[6px] pt-1 pb-3">
+              <div class="flex gap-1">
+                <div class="w-3 h-3 border border-black flex items-center mt-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.level_type.includes('Aircraft')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Aircraft</span>
+              </div>
+              <div class="flex gap-1">
+                <div class="w-3 h-3 border border-black flex items-center mt-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.level_type.includes('Engine')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Engine</span>
+              </div>
+              <div class="flex gap-1">
+                <div class="w-3 h-3 border border-black flex items-center mt-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.level_type.includes('APU')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">APU</span>
+              </div>
+              <div class="flex gap-1">
+                <div class="w-3 h-3 border border-black flex items-center mt-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.level_type.includes('Others')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Others</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px] pt-1">Detail of Occurence:</div>
+          <div class="px-[6px] mt-1 pb-3">
+            {{ data.detail_occurance }}
+          </div>
+
+          <div class="h-2 border-b-[1px] border-black"></div>
+          <div class="grid grid-cols-[140px_218px_138px_1fr]">
+            <div
+              class="border-r-[1px] border-b-[1px] border-black px-[6px] pt-1 pb-3"
+            >
+              Name / ID No
+            </div>
+            <div
+              class="px-[6px] border-r-[1px] border-b-[1px] border-black pt-1 pb-3"
+            >
+              : <span>{{ data.Reportedby }}</span>
+            </div>
+            <div
+              class="border-r-[1px] border-b-[1px] border-black px-[6px] pt-1 pb-3"
+            >
+              Reporter Identity
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-[1px] border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.reporter_identity.includes('Shown')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">Shown</span>
+              </div>
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.reporter_identity.includes('Hidden')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">Hidden</span>
+              </div>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Unit
+            </div>
+            <div class="px-[6px] border-r-[1px] border-black border-b-[1px]">
+              : <span class="pt-1 pb-3">{{ data.reporter_uic }}</span>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Data Reference
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-[1px] border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.data_reference.includes('Yes')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">Yes</span>
+              </div>
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.data_reference.includes('No')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">No</span>
+              </div>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Date
+            </div>
+            <div class="px-[6px] border-r-[1px] border-black border-b-[1px]">
+              : <span class="pt-1 pb-3">{{ getFormattedReportDate() }}</span>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              HIRAC Process
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-[1px] border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.hirac_process.includes('Yes')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">Yes</span>
+              </div>
+
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.hirac_process.includes('No')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">No</span>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[170px_90px_120px_1fr]">
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Initial Probability:
+            </div>
+            <div
+              class="px-[6px] border-r-[1px] border-black border-b-[1px] pt-1 pb-3"
+            >
+              {{ data.Initial_probability }}
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Initial Severity:
+            </div>
+            <div class="flex border-b-[1px] border-black">
+              <div
+                class="w-[100px] border-r-[1px] border-black px-[6px] pt-1 pb-3"
+              >
+                {{ data.initial_severity }}
+              </div>
+              <div
+                class="w-[130px] border-r-[1px] border-black px-[6px] pt-1 pb-3"
+              >
+                Initial Risk Index:
+              </div>
+              <div class="px-[6px] pt-1 pb-3">{{ data.initial_riskindex }}</div>
+            </div>
+          </div>
+          <div class="px-[6px] pt-1">#1 Follow on:</div>
+          <div class="px-[6px] mt-1 pb-3 border-b-[1px] border-black">
+            {{ data.follup_detail }}
+          </div>
+
+          <div class="grid grid-cols-[140px_218px_138px_1fr]">
+            <div
+              class="border-r-[1px] border-b-[1px] border-black px-[6px] pt-1 pb-3"
+            >
+              Name / ID No
+            </div>
+            <div
+              class="px-[6px] border-r-[1px] border-b-[1px] border-black pt-1 pb-3"
+            >
+              : <span class="pt-1 pb-3">{{ data.follupby }}</span>
+            </div>
+            <div
+              class="border-r-[1px] border-b-[1px] border-black px-[6px] pt-1 pb-3"
+            >
+              Data Reference
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-[1px] border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.follup_datarefer.includes('Yes')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">Yes</span>
+              </div>
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.follup_datarefer.includes('No')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">No</span>
+              </div>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Unit
+            </div>
+            <div class="px-[6px] border-r-[1px] border-black border-b-[1px]">
+              : <span class="pt-1 pb-3">{{ data.follup_uic }}</span>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Status
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-[1px] border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.follup_status.includes('Open')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">Open</span>
+              </div>
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.follup_status.includes('Close')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">Close</span>
+              </div>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Date
+            </div>
+            <div class="px-[6px] border-r-[1px] border-black border-b-[1px]">
+              : <span class="pt-1 pb-3">{{ getFormattedFollupDate() }}</span>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Next Unit
+            </div>
+            <div class="px-[6px] border-black border-b-[1px] pt-1 pb-3">
+              {{ data.nextuic_follup }}
+            </div>
+          </div>
+          <div class="grid grid-cols-[170px_90px_120px_1fr]">
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Current Probability
+            </div>
+            <div
+              class="px-[6px] border-r-[1px] border-black border-b-[1px] pt-1 pb-3"
+            >
+              {{ data.current_probability }}
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Current Severity
+            </div>
+            <div class="flex border-b-[1px] border-black">
+              <div
+                class="w-[80px] border-r-[1px] border-black px-[6px] pt-1 pb-3"
+              >
+                {{ data.current_severity }}
+              </div>
+              <div
+                class="w-[130px] border-r-[1px] border-black px-[6px] pt-1 pb-3"
+              >
+                Current Risk Index:
+              </div>
+              <div class="px-[6px] pt-1 pb-3">{{ data.current_riskindex }}</div>
+            </div>
+          </div>
+          <div class="px-[6px] pt-1">#2 Follow on:</div>
+          <div class="px-[6px] mt-1 pb-3 border-b-[1px] border-black">
+            <!-- {{ data.follup_detail }} -->
+          </div>
+
+          <div class="grid grid-cols-[140px_218px_138px_1fr]">
+            <div
+              class="border-r-[1px] border-b-[1px] border-black px-[6px] pt-1 pb-3"
+            >
+              Name / ID No
+            </div>
+            <div
+              class="px-[6px] border-r-[1px] border-b-[1px] border-black pt-1 pb-3"
+            >
+              :
+              <span class="pt-1 pb-3">
+                <!-- {{ data.follupby }} -->
+              </span>
+            </div>
+            <div
+              class="border-r-[1px] border-b-[1px] border-black px-[6px] pt-1 pb-3"
+            >
+              Data Reference
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-[1px] border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.follup_datarefer.includes('Yes')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">Yes</span>
+              </div>
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.follup_datarefer.includes('No')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">No</span>
+              </div>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Unit
+            </div>
+            <div class="px-[6px] border-r-[1px] border-black border-b-[1px]">
+              :
+              <span class="pt-1 pb-3">
+                <!-- {{ data.follup_uic }} -->
+              </span>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Status
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-[1px] border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.follup_status.includes('Open')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">Open</span>
+              </div>
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.follup_status.includes('Close')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic pt-1 pb-3">Close</span>
+              </div>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Date
+            </div>
+            <div class="px-[6px] border-r-[1px] border-black border-b-[1px]">
+              :
+              <span class="pt-1 pb-3">
+                <!-- {{ getFormattedFollupDate() }} -->
+              </span>
+            </div>
+            <div
+              class="border-r-[1px] border-black px-[6px] border-b-[1px] pt-1 pb-3"
+            >
+              Next Unit
+            </div>
+            <div class="px-[6px] border-black border-b-[1px] pt-1 pb-3">
+              <!-- {{ data.nextuic_follup }} -->
+            </div>
+          </div>
+          <div class="grid grid-cols-[170px_90px_120px_1fr]">
+            <div class="border-r-[1px] border-black px-[6px] pt-1 pb-3">
+              Current Probability
+            </div>
+            <div class="px-[6px] border-r-[1px] border-black pt-1 pb-3">
+              <!-- {{ data.current_probability }} -->
+            </div>
+            <div class="border-r-[1px] border-black px-[6px] pt-1 pb-3">
+              Current Severity
+            </div>
+            <div class="flex border-black">
+              <div
+                class="w-[80px] border-r-[1px] border-black px-[6px] pt-1 pb-3"
+              >
+                <!-- {{ data.current_severity }} -->
+              </div>
+              <div
+                class="w-[130px] border-r-[1px] border-black px-[6px] pt-1 pb-3"
+              >
+                Current Risk Index:
+              </div>
+              <div class="px-[6px] pt-1 pb-3">
+                <!-- {{ data.current_riskindex }} -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-button (click)="convertToPDF()">Download</app-button>
+</div>

@@ -1,0 +1,885 @@
+<div class="container flex flex-col items-center justify-center py-8 gap-4">
+  <div
+    class="flex justify-center bg-white overflow-y-auto custom-scrollbar"
+    style="height: calc(100vh - 196px)"
+  >
+    <div
+      *ngIf="data"
+      class="bg-white w-[21cm] min-h-[29.5cm] border pt-[1.70cm] pl-[1cm] pr-[0.9cm]"
+      id="contentToConvert"
+    >
+      <div class="font-myriad leading-none">
+        <div class="min-w-full border-2 border-black text-[11pt]">
+          <div
+            class="grid grid-cols-[282px,1fr] h-[67px] border-b-2 border-black"
+          >
+            <div class="border-r-2 border-black items-center flex">
+              <img
+                src="assets/images/gmf-doa-logo-2.png"
+                alt="logodoa"
+                class="h-[40px] mx-auto"
+              />
+            </div>
+            <div class="text-center font-semibold text-2xl">
+              Internal Occurence Report
+            </div>
+          </div>
+          <div class="grid grid-cols-2 border-black border-b-2">
+            <div class="px-[6px] border-r-2 border-black border-b-2">
+              <div>Subject:</div>
+              <div>
+                {{ data.subject_ior }}
+              </div>
+            </div>
+            <div class="">
+              <div class="px-[6px] text-center border-b-2 border-black h-8">
+                Category
+              </div>
+              <div class="grid grid-cols-[160px_1fr] align-top">
+                <div
+                  class="px-[6px] border-r-2 border-black border-b-2 h-7 flex gap-1"
+                >
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                      [ngClass]="{
+                        hidden: data.category_occur !== 'DOA Management'
+                      }"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">DOA Management</span>
+                </div>
+                <div class="px-[6px] border-black border-b-2 h-7 flex gap-1">
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                      [ngClass]="{
+                        hidden:
+                          data.category_occur !== 'Partner or Subcontractor'
+                      }"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">Partner or Subcontractor</span>
+                </div>
+                <div
+                  class="px-[6px] border-r-2 border-black border-b-2 h-7 flex gap-1"
+                >
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                      [ngClass]="{
+                        hidden: data.category_occur !== 'Procedure'
+                      }"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">Procedure</span>
+                </div>
+                <div class="px-[6px] border-black border-b-2 h-7 flex gap-1">
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                      [ngClass]="{
+                        hidden: data.category_occur !== 'Material'
+                      }"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">Material</span>
+                </div>
+              </div>
+            </div>
+            <div class="border-black border-r-2 border-b-2 px-[6px]">
+              Occurence report no:
+              <span class="">{{ data.occur_nbr }}</span>
+            </div>
+            <div class="grid grid-cols-[160px_1fr]">
+              <div
+                class="px-[6px] border-black border-b-2 h-7 flex gap-1 border-r-2"
+              >
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Document'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Document</span>
+              </div>
+              <div class="px-[6px] border-black border-b-2 h-7 flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Information Technology'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Information Technology</span>
+              </div>
+            </div>
+            <div class="border-black border-r-2 border-b-2 px-[6px]">
+              Occurence date:
+              <span class="">{{ getFormattedOccurDate() }}</span>
+            </div>
+            <div class="grid grid-cols-[160px_1fr]">
+              <div
+                class="px-[6px] border-black border-b-2 h-7 flex gap-1 border-r-2"
+              >
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Personel'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Personel</span>
+              </div>
+              <div class="px-[6px] border-black border-b-2 h-7 flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Training'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Training</span>
+              </div>
+            </div>
+            <div class="px-[6px] border-r-2 border-black border-b-2">
+              <div>Reference:</div>
+              <div>{{ data.reference_ior }}</div>
+            </div>
+            <div class="grid grid-cols-[160px_1fr]">
+              <div
+                class="px-[6px] border-black border-b-2 h-7 flex gap-1 border-r-2"
+              >
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Facility'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Facility</span>
+              </div>
+              <div class="px-[6px] border-black border-b-2 h-7 flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: data.category_occur !== 'Others'
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Others</span>
+              </div>
+              <div class="h-7 border-black border-b-2 px-[6px] col-span-2">
+                TYPE or P/N:
+                <span class="px-[6px]">{{ data.type_or_pnbr }}</span>
+              </div>
+            </div>
+            <div class="flex border-r-2 border-black h-7 border-b-2">
+              <div class="w-[90px] border-r-2 border-black px-[6px]">To:</div>
+              <div class="px-[6px]">{{ data.to_uic }}</div>
+            </div>
+            <div class="text-center border-b-2 border-black">Level Type</div>
+            <div class="flex border-r-2 border-black h-7">
+              <div class="w-[90px] border-r-2 border-black px-[6px]">Copy:</div>
+              <div class="px-[6px]">{{ data.cc_uic }}</div>
+            </div>
+            <div class="grid grid-cols-4 px-[6px]">
+              <div class="flex gap-1">
+                <div class="w-3 h-3 border border-black flex items-center mt-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.level_type.includes('Aircraft')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Aircraft</span>
+              </div>
+              <div class="flex gap-1">
+                <div class="w-3 h-3 border border-black flex items-center mt-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.level_type.includes('Engine')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Engine</span>
+              </div>
+              <div class="flex gap-1">
+                <div class="w-3 h-3 border border-black flex items-center mt-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.level_type.includes('APU')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">APU</span>
+              </div>
+              <div class="flex gap-1">
+                <div class="w-3 h-3 border border-black flex items-center mt-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                    [ngClass]="{
+                      hidden: !data.level_type.includes('Others')
+                    }"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Others</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px]">Detail of hazard or ccurence:</div>
+          <div class="px-[6px] mt-1">
+            {{ data.detail_occurance }}
+          </div>
+          <div class="h-8"></div>
+          <div class="px-[6px] align-top italic text-xs text-gray-600">
+            Note: For anonymous reporting, please provide detailed description
+            of hazard/occurrence, and attach evidence to support the report. We
+            cannot follow up on reports that are incomplete or unclear.
+          </div>
+          <div class="h-2 border-b-2 border-black"></div>
+          <div class="grid grid-cols-2">
+            <div
+              class="grid grid-cols-2 border-r-2 border-black h-7 border-b-2"
+            >
+              <div class="border-r-2 border-black px-[6px]">
+                Anonymous reporter
+              </div>
+              <div class="grid grid-cols-2 px-[6px]">
+                <div class="px-[6px] flex gap-1">
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                      [ngClass]="{
+                        hidden: data.reporter_identity !== 'Yes'
+                      }"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">Yes</span>
+                </div>
+                <div class="px-[6px] flex gap-1">
+                  <div
+                    class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="w-3 h-3"
+                      [ngClass]="{
+                        hidden: data.reporter_identity !== 'No'
+                      }"
+                    >
+                      <g
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      >
+                        <path
+                          d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                        />
+                        <path
+                          d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="italic">No</span>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 border-b-2 border-black">
+              <div class="border-r-2 border-black px-[6px]">Name/ID No</div>
+              <div class="px-[6px]">
+                : <span>{{ data.Reportedby }}</span>
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-2 border-r-2 border-black h-7 border-b-2"
+            >
+              <div class="border-r-2 border-black px-[6px]">
+                Date of reported
+              </div>
+              <div class="px-[6px]">
+                : <span>{{ getFormattedReportDate() }}</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 border-b-2 border-black">
+              <div class="border-r-2 border-black px-[6px]">Unit</div>
+              <div class="px-[6px]">
+                : <span>{{ data.reporter_uic }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-[6px]">#1 Follow on:</div>
+          <div class="px-[6px] mt-1"></div>
+          <div class="h-16 border-b-2 border-black"></div>
+          <div class="grid grid-cols-[140px,95px,190px,1fr]">
+            <div class="border-r-2 border-b-2 border-black px-[6px] h-7">
+              Name / ID No
+            </div>
+            <div class="px-[6px] border-r-2 border-b-2 border-black">
+              : <span></span>
+            </div>
+            <div class="border-r-2 border-b-2 border-black px-[6px]">
+              Need further review
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-2 border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Yes</span>
+              </div>
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">No</span>
+              </div>
+            </div>
+            <div class="border-r-2 border-black px-[6px] border-b-2 h-7">
+              Unit
+            </div>
+            <div class="px-[6px] border-r-2 border-black border-b-2">
+              : <span></span>
+            </div>
+            <div class="border-r-2 border-black px-[6px] border-b-2">
+              Status
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-2 border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Open</span>
+              </div>
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Close</span>
+              </div>
+            </div>
+            <div class="border-r-2 border-black px-[6px] border-b-2 h-7">
+              Date of follow on
+            </div>
+            <div class="px-[6px] border-r-2 border-black border-b-2">
+              : <span></span>
+            </div>
+            <div class="border-r-2 border-black px-[6px] border-b-2">
+              Next Unit
+            </div>
+            <div class="px-[6px] border-black border-b-2">: <span></span></div>
+            <div class="border-r-2 border-black px-[6px] border-b-2 h-7">
+              Initial Probability
+            </div>
+            <div class="px-[6px] border-r-2 border-black border-b-2">
+              : <span></span>
+            </div>
+            <div class="border-r-2 border-black px-[6px] border-b-2">
+              Initial Severity
+            </div>
+            <div class="flex border-b-2 border-black">
+              <div class="w-[80px] border-r-2 border-black px-[6px]"></div>
+              <div class="w-[130px] border-r-2 border-black px-[6px]">
+                Initial Risk Index:
+              </div>
+              <div class="px-[6px]"></div>
+            </div>
+          </div>
+          <div class="px-[6px]">#2 Follow on:</div>
+          <div class="px-[6px] mt-1"></div>
+          <div class="h-16 border-b-2 border-black"></div>
+          <div class="grid grid-cols-[140px,95px,190px,1fr]">
+            <div class="border-r-2 border-b-2 border-black px-[6px] h-7">
+              Name / ID No
+            </div>
+            <div class="px-[6px] border-r-2 border-b-2 border-black">
+              : <span></span>
+            </div>
+            <div class="border-r-2 border-b-2 border-black px-[6px]">
+              Need further review
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-2 border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Yes</span>
+              </div>
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">No</span>
+              </div>
+            </div>
+            <div class="border-r-2 border-black px-[6px] border-b-2 h-7">
+              Unit
+            </div>
+            <div class="px-[6px] border-r-2 border-black border-b-2">
+              : <span></span>
+            </div>
+            <div class="border-r-2 border-black px-[6px] border-b-2">
+              Status
+            </div>
+            <div class="grid grid-cols-2 px-[6px] border-b-2 border-black">
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Open</span>
+              </div>
+              <div class="px-[6px] flex gap-1">
+                <div
+                  class="w-3 h-3 border border-black flex justify-center items-center mt-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="w-3 h-3"
+                  >
+                    <g
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path
+                        d="M5.47 5.47a.75.75 0 0 1 1.06 0l12 12a.75.75 0 1 1-1.06 1.06l-12-12a.75.75 0 0 1 0-1.06"
+                      />
+                      <path
+                        d="M18.53 5.47a.75.75 0 0 1 0 1.06l-12 12a.75.75 0 0 1-1.06-1.06l12-12a.75.75 0 0 1 1.06 0"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <span class="italic">Close</span>
+              </div>
+            </div>
+            <div class="border-r-2 border-black px-[6px] border-b-2 h-7">
+              Date of follow on
+            </div>
+            <div class="px-[6px] border-r-2 border-black border-b-2">
+              : <span></span>
+            </div>
+            <div class="border-r-2 border-black px-[6px] border-b-2">
+              Next Unit
+            </div>
+            <div class="px-[6px] border-black border-b-2">: <span></span></div>
+            <div class="border-r-2 border-black px-[6px] h-7">
+              Current Probability
+            </div>
+            <div class="px-[6px] border-r-2 border-black">: <span></span></div>
+            <div class="border-r-2 border-black px-[6px]">Current Severity</div>
+            <div class="flex border-black">
+              <div class="w-[80px] border-r-2 border-black px-[6px]"></div>
+              <div class="w-[130px] border-r-2 border-black px-[6px]">
+                Current Risk Index:
+              </div>
+              <div class="px-[6px]"></div>
+            </div>
+          </div>
+        </div>
+        <div class="h-8"></div>
+        <div class="px-[6px] align-bottom italic text-xs">
+          Note: For anonymous reporting, please provide detailed description of
+          hazard/occurrence, and attach evidence to support the report. We
+          cannot follow up on reports that are incomplete or unclear.
+        </div>
+        <div class="w-full border-b-2 border-black h-3"></div>
+        <p class="text-[15px] px-[6px]">Form No. GMF/IM/E-013</p>
+      </div>
+    </div>
+  </div>
+  <app-button (click)="convertToPDF()">Download</app-button>
+</div>

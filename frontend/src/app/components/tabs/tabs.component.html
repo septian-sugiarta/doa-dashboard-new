@@ -1,0 +1,20 @@
+<div
+  [ngClass]="{
+    'grid-cols-2': gridColumns === 2,
+    'grid-cols-5': gridColumns === 5
+  }"
+  class="grid gap-2 overflow-x-auto flex-grow custom-scrollbar max-w-full"
+>
+  <app-button
+    *ngFor="let tab of tabs"
+    (click)="setActiveTab(tab.value)"
+    [color]="activeTab === tab.value ? 'primary' : 'secondary'"
+    class="w-full text-x"
+  >
+    {{ tab.label }}
+  </app-button>
+</div>
+
+<div class="mt-4 p-6 border rounded-lg bg-white">
+  <ng-container *ngComponentOutlet="activeComponent"></ng-container>
+</div>
