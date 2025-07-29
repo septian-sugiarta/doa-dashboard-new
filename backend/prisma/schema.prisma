@@ -1,0 +1,345 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+//npx prisma db push
+model User{
+  id Int @id @default(autoincrement())
+  id_number Int 
+  name String
+  unit String
+  role String
+  email String @unique
+  username String
+  password String
+  createdAt DateTime @default(now())
+}
+
+model NcrForm {
+  NCR_init_ID        Int             @id @default(autoincrement())  
+  RegulationBased    String
+  Subject            String
+  Audit_Plan_No      String
+  NCR_nbr            String
+  Issued_date        DateTime
+  Responsible_Office String
+  times_occurred   String
+  Audit_Type         String
+  Audit_scope        String
+  To_UIC             String
+  Attention          String
+  Required_condition_reff String
+  Level_of_Finding   String
+  implementation_date DateTime
+  Problem_Analysis    String
+  Answer_due_date    DateTime
+  Issue_IAN          String
+  IAN_nbr            String
+  Encountered_Condition String
+  Audited_by         String
+  Audit_Date         DateTime
+  Acknowledge_by     String
+  Acknowledge_date   DateTime
+  Status             String          
+  Remark             String
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+  ncrformStatus          String          @default("Reply")
+
+
+  NcrReplies         NcrReply[]      @relation("NcrFormReplies")  
+  NcrFollowResults   NcrFollowResult[] @relation("NcrFormFollowResults") 
+  NvsForms           NvsForm[]
+}
+
+model NcrReply {
+  ncrReply_id        Int             @id @default(autoincrement())  
+  RCA_problem        String
+  Corrective_Action  String
+  Preventive_Action  String
+  Recommend_corrective_action String
+  Identified_by_Auditee String
+  Identified_Date    DateTime
+  Accept_by_Auditor  String
+  Auditor_Accept_date DateTime
+  implementationReply_date DateTime
+  createdAt          DateTime @default(now())
+  ncrreplyStatus          String          @default("Follow Result")
+
+  ncrId              Int 
+  ncrForm            NcrForm @relation("NcrFormReplies", fields: [ncrId], references: [NCR_init_ID], onDelete: Cascade)
+
+  NcrFollowResults   NcrFollowResult[] @relation("NcrReplyFollowResults")
+}
+
+model NcrFollowResult { 
+  ncrFollowResult_id        Int             @id @default(autoincrement())  
+  Close_Corrective_Actions String
+  Proposed_Close_Auditee  String
+  Proposed_Close_Date DateTime
+  Implemented_close_date DateTime
+  Is_close           String
+  effectiveness      String
+  Refer_to_Verify_Sheet String
+  Sheet_No           String
+  New_NCR_Issue_nbr  String
+  Close_approved_by  String
+  Close_approved_date DateTime
+  Verified_Chief_IM  String
+  Verified_Date      DateTime
+  followup_audit_result String
+  evidence          String
+  createdAt          DateTime @default(now())
+   ncrfollowresultStatus          String          @default("Finish")
+
+  ncrId              Int 
+  ncrForm            NcrForm @relation("NcrFormFollowResults", fields: [ncrId], references: [NCR_init_ID], onDelete: Cascade)
+
+  ncrReplyId         Int   // Menambahkan referensi untuk NcrReply
+  ncrReply           NcrReply @relation("NcrReplyFollowResults", fields: [ncrReplyId], references: [ncrReply_id])
+}
+
+
+model IorForm {
+  id_IOR Int @id @default(autoincrement())
+  subject_ior String
+  occur_nbr String
+  occur_date DateTime
+  reference_ior String
+  to_uic String
+  cc_uic String
+  category_occur String
+  type_or_pnbr String
+  level_type String
+  detail_occurance String
+  Reportedby String
+  reporter_uic String
+  report_date DateTime
+  reporter_identity String
+  data_reference String
+  hirac_process String
+  Initial_probability String
+  initial_severity String
+  initial_riskindex String
+  createdAt DateTime @default(now())
+  iorformStatus          String          @default("Follow On")
+
+  iorFollowOn IorFollowOn[] @relation("IorFollowOns") 
+}
+
+model IorFollowOn{
+  iorFollowOn_id        Int             @id @default(autoincrement())  
+  follup_detail String
+  follupby String
+  follup_uic String
+  follup_date DateTime
+  follup_datarefer String
+  follup_status String
+  nextuic_follup String
+  current_probability String
+  current_severity String
+  current_riskindex String
+  createdAt DateTime @default(now())
+  iorfollowonStatus          String          @default("Finish")
+
+   iorId              Int 
+  iorForm            IorForm @relation("IorFollowOns", fields: [iorId], references: [id_IOR], onDelete: Cascade)
+}
+
+model ActionLog{
+  actionLog_id Int @id @default(autoincrement())
+  regulation_based String
+  action_nbr String
+  reference_PACLR_nbr String
+  issued_date DateTime
+  action_description String
+  audit_area String
+  status String
+  implementationAction_date DateTime
+  evidence String
+  close_date DateTime
+  createdAt DateTime @default(now())
+}
+
+model AuditStatusLog {
+  auditStatusLog_id  Int @id @default(autoincrement())
+  regulation_based String
+  doc_nbr String
+  statusLog_date DateTime
+  subject String
+  reason_of_issuance String
+  prepared_by String
+  prepared_date DateTime
+  checked_by String
+  checked_date DateTime
+  createdAt DateTime @default(now())
+}
+
+model NvsForm {
+  id               Int       @id @default(autoincrement())
+  ncrId            Int       // Sesuaikan agar match dengan NcrForm.NCR_init_ID
+  ncr_no           String?
+  verificationNote String?
+  resultDate       DateTime?
+  isEffective      Boolean?
+  isReminder       String?
+  verifiedBy       String?
+  verifiedDate     DateTime?
+  
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  ncr NcrForm @relation(fields: [ncrId], references: [NCR_init_ID])
+}
+
+// model AuditPlan {
+//   id_audit_plan Int @id @default(autoincrement())
+//   doc_no Int
+//   doc_date DateTime
+//   subject String
+//   audit_type String
+//   createdAt DateTime @default(now())
+  
+//   // Optional relations based on the other models
+//   APdetails APdetail[] @relation("AuditPlanDetails")
+// }
+
+// model APdetail {
+//   id_ap_detail Int @id @default(autoincrement())
+//   no_item Int
+//   requirement String
+//   work_station String
+//   planned_week Int
+//   actual_visit_date DateTime
+//   auditReportEvidenceNbr String
+//   createdAt DateTime @default(now())
+
+//   // Foreign key reference to AuditPlan
+//   auditPlanId Int
+//   auditPlan AuditPlan @relation("AuditPlanDetails", fields: [auditPlanId], references: [id_audit_plan], onDelete: Cascade)
+// }
+
+// model Issuence {
+//   id_issuence Int @id @default(autoincrement())
+//   issueNbr Int
+//   issueDate DateTime
+//   issueDesc String
+//   issueBy String
+//   HDOapprove String
+//   createdAt DateTime @default(now())
+
+//   // Optional relations to other models that may need Issuence reference
+//   FindingIdentification FindingIdentification[] @relation("IssuenceFindingIdentifications")
+// }
+
+// model FindingIdentification {
+//   id_finding_identification Int @id @default(autoincrement())
+//   Organisation_name String
+//   DOA_No String
+//   DOA_Core_Process String
+//   Key_Subject String
+//   Handbook_Procedure String
+//   Finding_No String
+//   Part_21 String
+//   Initial_Deadline DateTime
+//   Current_Deadline DateTime
+//   Level String
+//   Status String
+//   Finding String
+//   Notes String
+//   Evidence_references String
+//   Name String
+//   Position String
+//   Date_of_notification DateTime
+//   DOA_Holder_Focal_Point_Email String
+//   createdAt DateTime @default(now())
+
+//   // Foreign key reference to Issuence
+//   issuence_id Int
+//   issuence Issuence @relation("IssuenceFindingIdentifications", fields: [issuence_id], references: [id_issuence])
+
+//   // Optional relation to FindingClosure_LogEvents
+//   FindingClosure_LogEvents FindingClosure_LogEvents[] @relation("FindingIdentificationClosureEvents")
+
+//   FindingClosure_RootCause_Extensions FindingClosure_RootCause_Extensions[] @relation("FindingIdentificationClosureEvents")
+//   FindingClosureCorrectiveActionPlan FindingClosureCorrectiveActionPlan[] @relation("FindingIdentificationClosureEvents")
+//   FindingClosureClosingTheFinding FindingClosureClosingTheFinding[] @relation("FindingIdentificationClosureEvents")
+//   ClosureAndPerformance ClosureAndPerformance[] @relation("FindingIdentificationClosureEvents")
+// }
+
+// model FindingClosure_LogEvents {
+//   id_finding_closure_log_events Int @id @default(autoincrement())
+//   Date_log DateTime
+//   Description_type String
+//   Description_text String
+//   createdAt DateTime @default(now())
+
+//   // Foreign key reference to FindingIdentification
+//   finding_identification_id Int
+//   finding_identification FindingIdentification @relation("FindingIdentificationClosureEvents", fields: [finding_identification_id], references: [id_finding_identification])
+// }
+
+// model FindingClosure_RootCause_Extensions {
+//   id_finding_closure_root_cause_extensions Int @id @default(autoincrement())
+//   Item String
+//   DOA_holder_date_comment String
+//   DOA_holder_describe String
+//   EASA_response_date DateTime
+//   EASA_response String
+//   createdAt DateTime @default(now())
+
+//   // Foreign key reference to FindingIdentification
+//   finding_identification_id Int
+//   finding_identification FindingIdentification @relation("FindingIdentificationClosureEvents", fields: [finding_identification_id], references: [id_finding_identification])
+// }
+
+// model FindingClosureCorrectiveActionPlan {
+//   id_finding_closure_corrective_action_plan Int @id @default(autoincrement())
+//   item String
+//   DOA_holder_date_comment String
+//   DOA_holder_describe String
+//   EASA_response_date DateTime
+//   EASA_feedback String
+//   createdAt DateTime @default(now())
+
+//   // Foreign key reference to FindingIdentification
+//   finding_identification_id Int
+//   finding_identification FindingIdentification @relation("FindingIdentificationClosureEvents", fields: [finding_identification_id], references: [id_finding_identification])
+// }
+
+// model FindingClosureClosingTheFinding {
+//   id_finding_closure_closing_the_finding Int @id @default(autoincrement())
+//   item String
+//   DOA_holder_date_comment String
+//   DOA_holder_describe String
+//   EASA_response_date DateTime
+//   EASA_response String
+//   createdAt DateTime @default(now())
+
+//   // Foreign key reference to FindingIdentification
+//   finding_identification_id Int
+//   finding_identification FindingIdentification @relation("FindingIdentificationClosureEvents", fields: [finding_identification_id], references: [id_finding_identification])
+// }
+
+// model ClosureAndPerformance {
+//   id_closure_and_performance Int @id @default(autoincrement())
+//   closure String
+//   No_of_extention String
+//   was_the_finding_overdue String
+//   createdAt DateTime @default(now())
+
+//   // Optional relation to FindingIdentification
+//   finding_identification_id Int
+//   finding_identification FindingIdentification @relation("FindingIdentificationClosureEvents", fields: [finding_identification_id], references: [id_finding_identification])
+// }
