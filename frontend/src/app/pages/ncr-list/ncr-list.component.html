@@ -45,7 +45,7 @@
       <div class="flex flex-col gap-1 w-full h-full">
   <div class="">
     <div
-      class="grid grid-cols-[90px_120px_180px_140px_100px_120px_80px_60px_60px_60px] gap-3 items-start justify-start pr-[15px]"
+      class="grid grid-cols-[90px_120px_180px_140px_100px_120px_80px_160px] gap-3 items-start justify-start pr-[15px]"
     >
       <app-sort-button
         [sortState]="sortState.RegulationBased"
@@ -153,7 +153,7 @@
         </a>
       </div>
 
-      <div class="flex justify-center gap-4 items-center">
+      <div class="flex justify-center gap-2 ml-20 items-center">
         <a
           [routerLink]="
             getNcrLink(item.RegulationBased, item.NCR_init_ID, item.status)
@@ -226,17 +226,7 @@
             </g>
           </svg>
         </a>
-
-        <a
-          [routerLink]="['/nvs-form', item.NCR_init_ID]"
-          *ngIf="item.status === 'Finish'"
-        >
-          <app-button [color]="'secondary'" class="py-1">
-            <p class="text-black font-medium text-xs">Lihat NVS</p>
-          </app-button>
-        </a>
-      </div>
-      <div class="flex justify-center gap-4 items-center">
+      
         <a
           [routerLink]="['/edit-ncr-form', item.NCR_init_ID]"
           *ngIf="item.status === 'Reply'"
@@ -300,7 +290,7 @@
             </g>
           </svg>
         </a>
-
+        
         <div
           [ngClass]="{
             hidden: visibility === 'hidden',
@@ -312,7 +302,7 @@
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
-              viewBox="0 0 24 24"
+              viewBox="0 0 24 19"
             >
               <path
                 fill="none"
@@ -324,6 +314,7 @@
               />
             </svg>
           </button>
+          
 
           <app-modal
             [isOpen]="isModalOpen"
@@ -341,6 +332,7 @@
                 d="m12.8 1.613l6.701 11.161c.963 1.603.49 3.712-1.057 4.71a3.2 3.2 0 0 1-1.743.516H3.298C1.477 18 0 16.47 0 14.581c0-.639.173-1.264.498-1.807L7.2 1.613C8.162.01 10.196-.481 11.743.517c.428.276.79.651 1.057 1.096M10 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2m0-9a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V6a1 1 0 0 0-1-1"
               />
             </svg>
+            
             <h2 class="text-lg font-semibold text-center text-primary">
               Delete this NCR?
             </h2>
@@ -350,6 +342,14 @@
             </h4>
           </app-modal>
         </div>
+        <a
+          [routerLink]="['/nvs-form', item.NCR_init_ID]"
+          *ngIf="item.status === 'Finish'"
+        >
+          <app-button [color]="'secondary'" class="py-1">
+            <p class="text-black font-medium text-xs -ml-3">NVS</p>
+          </app-button>
+        </a>
       </div>
     </div>
   </div>

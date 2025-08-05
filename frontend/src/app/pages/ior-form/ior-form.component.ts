@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ior-form',
-  imports: [TextInputComponent, OptionInputComponent, TextAreaInputComponent, ButtonComponent, CheckboxComponent],
-  providers: [FormsModule],
+  standalone: true,
+  imports: [TextInputComponent, OptionInputComponent, TextAreaInputComponent, ButtonComponent, CheckboxComponent, FormsModule],
   templateUrl: './ior-form.component.html',
   styleUrl: './ior-form.component.css'
 })
@@ -41,19 +41,23 @@ export class IorFormComponent {
   }
 
   onSubmit() {
-    this.iorFormService.createIorForm(this.formData).subscribe(
-      (response: any) => {
-        console.log('Form submitted successfully');
+  const payload = {
+    ...this.formData,
+    occur_nbr: `IOR/E-${this.formData.occur_nbr}`
+  };
 
-        this.updateStatusAfterSubmit(response.id_IOR);
+  this.iorFormService.createIorForm(payload).subscribe(
+    (response: any) => {
+      console.log('Form submitted successfully');
 
-        this.router.navigate(['/ior-list']);
-      },
-      (error) => {
-        console.error('Error submitting form', error);
-      }
-    );
-  }
+      this.updateStatusAfterSubmit(response.id_IOR);
+      this.router.navigate(['/ior-list']);
+    },
+    (error) => {
+      console.error('Error submitting form', error);
+    }
+  );
+}
 
   updateStatusAfterSubmit(iorId: number) {
 

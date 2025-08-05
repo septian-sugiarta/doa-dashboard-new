@@ -16,18 +16,21 @@
         (submit)="$event.preventDefault(); onSubmit()"
         class="flex flex-col gap-6 overflow-y-auto flex-grow custom-scrollbar"
       >
-        <!-- Verification No -->
-        <app-text-input
+      <!-- Verification No -->
+      <label for="verification_no" class="text-sm font-semibold text-gray-800 ml-[7px] -mb-[10px]">
+        NCR Verification No. <span class="text-red-500">*</span></label>
+      <div class="flex items-center border-b border-black px-3 -ml-[5px]">
+        <span class="text-sm text-gray-800 select-none">NVS/E-</span>
+        <input
           id="verification_no"
           name="verification_no"
           type="text"
-          placeholder="Enter Verification No"
-          [required]="true"
-          [(value)]="formData.verification_no"
-          variant="primary"
-        >
-          NCR Verification No.
-        </app-text-input>
+          placeholder="XXX"
+          required
+          class="text-sm ml-1 flex-1 focus:outline-none"
+          [(ngModel)]="formData.verification_no"
+          />
+        </div>
 
         <!-- NCR No. -->
         <app-text-input
@@ -80,7 +83,7 @@
           [(value)]="formData.reminder_no"
           variant="primary"
         >
-          New NCR / Reminder No.
+          New NCR / Quality Assurance Reminder No. <span class="text-gray-500 italic ml-2">(Type "-" if there is no new ncr number) </span>
         </app-text-input>
 
         <!-- Verified By -->

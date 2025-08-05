@@ -190,6 +190,7 @@ model NvsForm {
   id               Int       @id @default(autoincrement())
   ncrId            Int       // Sesuaikan agar match dengan NcrForm.NCR_init_ID
   ncr_no           String?
+  nvs_no           String?
   verificationNote String?
   resultDate       DateTime?
   isEffective      Boolean?

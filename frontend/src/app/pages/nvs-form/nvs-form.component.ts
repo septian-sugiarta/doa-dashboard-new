@@ -8,12 +8,12 @@ import { OptionInputComponent } from '../../shared/option-input/option-input.com
 import { TextAreaInputComponent } from '../../shared/text-area-input/text-area-input.component';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { NcrFormService } from '../../services/ncr-form/ncr-form.service';
-
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-nvs-form',
   standalone: true,
-  imports: [TextInputComponent, OptionInputComponent, TextAreaInputComponent, ButtonComponent],
+  imports: [FormsModule, TextInputComponent, OptionInputComponent, TextAreaInputComponent, ButtonComponent],
   templateUrl: './nvs-form.component.html',
   styleUrls: ['./nvs-form.component.css']
 })
@@ -31,6 +31,7 @@ export class NvsFormComponent implements OnInit {
   formData = {
     NCR_nbr:'',
     verification_no: '',
+    nvs_no: '',
     ncr_no: '',
     verification_result: '',
     is_effective: '',
@@ -49,6 +50,10 @@ export class NvsFormComponent implements OnInit {
 
   this.ncrId = Number(idParam);
   this.loadFormData(this.ncrId); // << Tambahkan ini
+
+  this.formData.verification_no = '';
+  const fullVerificationNo = '' + this.formData.verification_no;
+  this.formData.verification_no = fullVerificationNo;
 
   this.nvsFormService.getNvsByNcrId(this.ncrId).subscribe({
     next: (data) => {
@@ -86,10 +91,10 @@ export class NvsFormComponent implements OnInit {
       alert('Please fill required fields!');
       return;
     }
-    
 
     console.log(this.formData)
-    
+    this.formData.nvs_no = 'NVS/E-' + this.formData.verification_no; 
+       
     this.nvsFormService.saveNvsData(this.ncrId, this.formData).subscribe({
       next: (res) => {
         console.log('Success:', res);

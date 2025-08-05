@@ -15,6 +15,7 @@ export class NvsFormService {
       data: {
         ncrId,
         ncr_no: ncr?.NCR_nbr ??'',
+        nvs_no: dto.nvs_no,
         verificationNote: dto.verification_result,
         resultDate: new Date(),
         isEffective: dto.is_effective === 'Effective',

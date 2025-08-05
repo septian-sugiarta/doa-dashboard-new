@@ -28,17 +28,21 @@
           >Subject</app-text-area-input
         >
 
-        <app-text-input
-          id="Occurrence Report No."
-          name="Occurrence Report No."
-          type="text"
-          placeholder="Enter your data"
-          [required]="true"
-          class=""
-          [(value)]="formData.occur_nbr"
-          variant="primary"
-          >Occurrence Report No.</app-text-input
-        >
+        <label for="occur_nbr" class="text-sm font-semibold text-gray-800 ml-[7px] -mb-[10px]">
+          Occurrence Report No. <span class="text-red-500">*</span></label>
+        <div class="flex items-center border-b border-black px-3 -ml-[5px]">
+          <span class="text-sm text-gray-800 select-none">IOR/E-</span>
+          <input
+            id="occur_nbr"
+            name="occur_nbr"
+            type="text"
+            placeholder="XXX"
+            required
+            class="text-sm ml-1 flex-1 focus:outline-none"
+            [(ngModel)]="formData.occur_nbr"
+          />
+        </div>
+
         <app-text-input
           id="Occurrence Date"
           name="Occurrence Date"

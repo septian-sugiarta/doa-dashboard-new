@@ -1,1 +1,109 @@
-<p>nvs-preview works!</p>
+<div class="container flex flex-col items-center justify-center gap-4">
+  <div class="flex justify-center bg-white overflow-y-auto custom-scrollbar" style="height: calc(100vh - 196px)">
+    <div class="bg-white w-[21cm] border pt-[1.2cm] pl-[2.28cm] pr-[1.68cm] pb-[13cm]" id="contentToConvert">
+      <div class="font-myriad leading-none">
+        <!-- Table Atas -->
+        <div class="min-w-full border-2 border-black text-[11pt]">
+          <!-- Header -->
+          <div class="grid grid-cols-[140px,300px,1fr] border-b-2 border-black h-16">
+            <div class="border-r-2 border-black">
+              <img src="assets/images/gmf-doa-logo-2.png" alt="logodoa" class="h-6 mt-2 w-32" />
+              <p class="text-center italic">EASA 21J.565</p>
+            </div>
+            <div class="flex items-center justify-center border-r-2 border-black">
+              <p class="font-bold text-base -mt-3">NCR VERIFICATION SHEET</p>
+            </div>
+            <div class="flex items-center justify-center">
+              <div class="grid grid-cols-[90px,1fr,80px] px-[6px] gap-x-[8px] auto-rows-auto h-10 text-sm -mt-3">
+                <div>Doc No.</div>
+                <div>:</div>
+                <div class="italic">{{ data.nvs_no }}</div>
+                <div>Date</div>
+                <div>:</div>
+                <div class="italic">{{ getFormattedResultDate() }}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="flex flex-row gap-4 border-black p-2 -mt-1 h-10">
+            <div>Subject</div>
+            <div>:</div>
+            <div>Closing status of {{ data.ncr_no }}</div>
+          </div>
+        </div>
+
+        <br>
+        
+        <!-- Table Bawah -->
+        <div class="min-w-full border-2 border-black text-[11pt]">
+          <!-- NCR Verification Details -->
+          <div class="grid grid-cols-1 border-b-2 border-black">
+            <div class="flex items-center p-2">
+              <div class="pb-4"><p><strong>NCR Doc No. &nbsp;:</strong> {{ data.ncr_no }}</p></div>
+            </div>
+          </div>
+
+          <!-- Verification Result -->
+          <div class="p-2 -mt-2 h-20">
+            <p><strong>Verification Results:</strong></p><br>
+            <div class="italic whitespace-pre-line">{{ data.verificationNote }}</div>
+          </div>
+
+          <!-- Effective & Reminder -->
+          <div class="grid grid-cols-1 border-b-2 border-t-2 border-black">
+            <div class="pb-6">
+              <div class="border-black flex items-center p-2">
+                <div class="flex items-center gap-5">
+                  <div class="flex">
+                    <input type="checkbox" [checked]="data.isEffective" disabled />
+                    <div class="-mt-2 ml-1"><p>Effective</p></div>
+                  </div>
+                  <div class="flex">
+                    <input type="checkbox" [checked]="!data.isEffective" disabled />
+                    <div class="-mt-2 ml-1"><p>Not Effective</p></div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="flex items-center p-2 gap-2">
+                <div class="flex">
+                  <input type="checkbox" [checked]="shouldCheckReminder(data.isReminder)" disabled />
+                  <div class="flex -mt-2 ml-1 gap-3">
+                    <div>New NCR / Quality Assurance Reminder, No</div>
+                    <div>:</div>
+                    <div><span class="italic">{{ data.isReminder }}</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Verified By & Date -->
+          <div class="grid grid-cols-1 border-black">
+            <div class="pb-5">
+              <div class=" border-black flex items-center p-2">
+                <div class="flex items-center gap-2">
+                  <div>Verified (Auditor) by</div>
+                  <div>:</div>
+                  <div><span class="italic">{{ data.verifiedBy }}</span></div>
+                </div>
+              </div>
+              <div class="flex items-center p-2 gap-2">
+                <div>Date</div>
+                <div>:</div>
+                <div><span class="italic">{{ getFormattedVerifiedDate() }}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-[15px] mt-4">Form No. GMF/IM/E-002 R3</p>
+        <br><br>
+      </div>
+    </div>
+  </div>
+  <div class="flex gap-4">
+    <app-button (click)="convertToPDF()">Download</app-button>
+    <app-button><a href="/ncr-list">Back to NCR List</a></app-button>
+  </div>
+</div>
