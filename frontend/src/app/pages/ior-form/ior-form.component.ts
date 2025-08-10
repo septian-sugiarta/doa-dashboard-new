@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TextInputComponent } from '../../shared/text-input/text-input.component';
 import { OptionInputComponent } from '../../shared/option-input/option-input.component';
 import { TextAreaInputComponent } from '../../shared/text-area-input/text-area-input.component';
@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrl: './ior-form.component.css'
 })
 export class IorFormComponent {
+  @Input() readOnly= true;
   constructor(private iorFormService: IorFormService, private router: Router) { }
 
   formData = {
@@ -38,6 +39,14 @@ export class IorFormComponent {
     Initial_probability: '',
     initial_severity: '',
     initial_riskindex: ''
+  }
+
+  ngOnInit() {
+    this.updateRiskIndex();
+  }
+
+  ngOnChanges() {
+    this.updateRiskIndex();
   }
 
   onSubmit() {
@@ -70,6 +79,13 @@ export class IorFormComponent {
       }
     );
   }
-
-
+  
+  updateRiskIndex() {
+    if (this.formData.Initial_probability && this.formData.initial_severity) {
+      this.formData.initial_riskindex =
+        this.formData.Initial_probability + this.formData.initial_severity;
+    } else {
+      this.formData.initial_riskindex = '';
+    }
+  }
 }

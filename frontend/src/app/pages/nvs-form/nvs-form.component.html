@@ -87,17 +87,27 @@
         </app-text-input>
 
         <!-- Verified By -->
-        <app-text-input
-          id="verified_by"
-          name="verified_by"
-          type="text"
-          placeholder="Enter Verifier Name"
-          [required]="true"
+        <app-option-input
+          id="Verified By"
+          name="Verified By"
+          placeholder="Select an option"
+          [required]="false"
           [(value)]="formData.verified_by"
-          variant="primary"
+          [options]="[
+            { value: 'Edy Noerachman', label: 'Edy Noerachman' },
+            { value: 'Dian Rachmawati', label: 'Dian Rachmawati' },
+            { value: 'Imanuddin Yahya', label: 'Imanuddin Yahya' },
+            { value: 'I G. A. Aditya Jaya', label: 'I G. A. Aditya Jaya' },
+            { value: 'Fathiya Ikrimah', label: 'Fathiya Ikrimah' },
+            { value: 'Muhammad Rizqi W.', label: 'Muhammad Rizqi W.' },
+            { value: 'Mukhamad Aziz', label: 'Mukhamad Aziz' },
+            { value: 'Anindya Devi R.', label: 'Anindya Devi R.' },
+            { value: 'Gelang Gapuro A.', label: 'Gelang Gapuro A.' },
+            { value: 'Fahad Arwani', label: 'Fahad Arwani' },
+            { value: 'Maulana Mulia', label: 'Maulana Mulia' }
+          ]"
+          >Verified by</app-option-input
         >
-          Verified by
-        </app-text-input>
 
         <!-- Verification Date -->
         <app-text-input

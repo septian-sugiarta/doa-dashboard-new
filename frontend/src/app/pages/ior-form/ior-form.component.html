@@ -65,27 +65,65 @@
           variant="primary"
           >Reference</app-text-input
         >
-        <app-text-input
+        <app-option-input
           id="To UIC"
           name="To UIC"
-          type="text"
-          placeholder="Enter your data"
+          placeholder="Select an option"
           [required]="true"
-          class=""
           [(value)]="formData.to_uic"
-          variant="primary"
-          >To UIC</app-text-input
+          [options]="[
+            {
+              value: 'TEJ-1',
+              label: 'TEJ-1'
+            },
+            {
+              value: 'TEJ-2',
+              label: 'TEJ-2'
+            },
+            {
+              value: 'TEJ-3',
+              label: 'TEJ-3'
+            },
+            {
+              value: 'TEJ',
+              label: 'TEJ'
+            },
+            {
+              value: 'Other',
+              label: 'Other'
+            }
+          ]"
+          >To UIC</app-option-input
         >
-        <app-text-input
+        <app-option-input
           id="CC UIC"
           name="CC UIC"
-          type="text"
-          placeholder="Enter your data"
+          placeholder="Select an option"
           [required]="true"
-          class=""
           [(value)]="formData.cc_uic"
-          variant="primary"
-          >CC UIC</app-text-input
+          [options]="[
+            {
+              value: 'TEJ-1',
+              label: 'TEJ-1'
+            },
+            {
+              value: 'TEJ-2',
+              label: 'TEJ-2'
+            },
+            {
+              value: 'TEJ-3',
+              label: 'TEJ-3'
+            },
+            {
+              value: 'TEJ',
+              label: 'TEJ'
+            },
+            {
+              value: 'Other',
+              label: 'Other'
+            }
+          ]"
+          >CC UIC</app-option-input
         >
 
         <app-option-input
@@ -150,27 +188,57 @@
           class=""
           >Detail of Hazard or Occurrence</app-text-area-input
         >
-        <app-text-input
+        
+        <app-option-input
           id="Reported by"
           name="Reported by"
-          type="text"
-          placeholder="Enter your data"
+          placeholder="Select an option"
           [required]="true"
-          class=""
           [(value)]="formData.Reportedby"
-          variant="primary"
-          >Reported by</app-text-input
+          [options]="[
+            { value: 'Edy Noerachman', label: 'Edy Noerachman' },
+            { value: 'Dian Rachmawati', label: 'Dian Rachmawati' },
+            { value: 'Imanuddin Yahya', label: 'Imanuddin Yahya' },
+            { value: 'I G. A. Aditya Jaya', label: 'I G. A. Aditya Jaya' },
+            { value: 'Fathiya Ikrimah', label: 'Fathiya Ikrimah' },
+            { value: 'Muhammad Rizqi W.', label: 'Muhammad Rizqi W.' },
+            { value: 'Mukhamad Aziz', label: 'Mukhamad Aziz' },
+            { value: 'Anindya Devi R.', label: 'Anindya Devi R.' },
+            { value: 'Gelang Gapuro A.', label: 'Gelang Gapuro A.' },
+            { value: 'Fahad Arwani', label: 'Fahad Arwani' },
+            { value: 'Maulana Mulia', label: 'Maulana Mulia' }
+          ]"
+          >Reported by</app-option-input
         >
-        <app-text-input
+        <app-option-input
           id="Reported UIC"
           name="Reported UIC"
-          type="text"
-          placeholder="Enter your data"
+          placeholder="Select an option"
           [required]="true"
-          class=""
           [(value)]="formData.reporter_uic"
-          variant="primary"
-          >Reported UIC</app-text-input
+          [options]="[
+            {
+              value: 'TEJ-1',
+              label: 'TEJ-1'
+            },
+            {
+              value: 'TEJ-2',
+              label: 'TEJ-2'
+            },
+            {
+              value: 'TEJ-3',
+              label: 'TEJ-3'
+            },
+            {
+              value: 'TEJ',
+              label: 'TEJ'
+            },
+            {
+              value: 'Other',
+              label: 'Other'
+            }
+          ]"
+          >Reported UIC</app-option-input
         >
         <app-text-input
           id="Report Date"
@@ -218,13 +286,31 @@
           id="Initial Probability"
           name="Initial Probability"
           placeholder="Select an option"
-          [required]="false"
-          [options]="[
-            { value: 'procedure', label: 'Procedure' },
-            { value: 'product', label: 'Product' },
-            { value: 'surveillance', label: 'Surveillance' }
-          ]"
+          [required]="true"
           [(value)]="formData.Initial_probability"
+          (valueChange)="updateRiskIndex()"
+          [options]="[
+            {
+              value: '5',
+              label: '5 (Frequent)'
+            },
+            {
+              value: '4',
+              label: '4 (Occasional)'
+            },
+            {
+              value: '3',
+              label: '3 (Remote)'
+            },
+            {
+              value: '2',
+              label: '2 (Improbable)'
+            },
+            {
+              value: '1',
+              label: '1 (Extermely Improbable)'
+            }
+          ]"
           >Initial Probability</app-option-input
         >
         <app-option-input
@@ -232,41 +318,45 @@
           name="Initial Severity"
           placeholder="Select an option"
           [required]="false"
+          [(value)]="formData.initial_severity"
+          (valueChange)="updateRiskIndex()"
           [options]="[
             {
-              value: 'Chief Design Office',
-              label: 'Chief Design Office'
+              value: 'A',
+              label: 'A (Catastrophic)'
             },
             {
-              value: 'Chief Airworthiness Office',
-              label: 'Chief Airworthiness Office'
+              value: 'B',
+              label: 'B (Hazardous)'
             },
             {
-              value: 'Chief Independent Monitoring',
-              label: 'Chief Independent Monitoring'
+              value: 'C',
+              label: 'C (Major)'
             },
             {
-              value: 'Head of DOA',
-              label: 'Head of DOA'
+              value: 'D',
+              label: 'D (Minor)'
+            },
+            {
+              value: 'E',
+              label: 'E (Negligible)'
             }
           ]"
-          [(value)]="formData.initial_severity"
           >Initial Severity</app-option-input
         >
-        <app-option-input
+        
+        <app-text-input
           id="Initial Risk Index"
           name="Initial Risk Index"
-          placeholder="Select an option"
+          type="text"
+          [disabled]="true"
+          placeholder="Auto generated"
           [required]="false"
-          [options]="[
-            { value: 'authority', label: 'Authority' },
-            { value: 'internal', label: 'Internal' },
-            { value: 'external', label: 'External' },
-            { value: 'subcontractor', label: 'Subcontractor' }
-          ]"
           [(value)]="formData.initial_riskindex"
-          >Initial Risk Index</app-option-input
+          variant="primary"
         >
+          Initial Risk Index
+        </app-text-input>
 
         <app-button class="w-full mt-1" [color]="'primary'" type="submit"
           >Submit</app-button

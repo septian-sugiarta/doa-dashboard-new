@@ -12,7 +12,7 @@ import { IorFormService } from '../../services/ior-form/ior-form.service';
 
 @Component({
   selector: 'app-ior-follow-on',
-  imports: [TextInputComponent, TextAreaInputComponent, ButtonComponent, CheckboxComponent, CommonModule],
+  imports: [TextInputComponent, OptionInputComponent, TextAreaInputComponent, ButtonComponent, CheckboxComponent, CommonModule],
   providers: [FormsModule],
   templateUrl: './ior-follow-on.component.html',
   styleUrl: './ior-follow-on.component.css'

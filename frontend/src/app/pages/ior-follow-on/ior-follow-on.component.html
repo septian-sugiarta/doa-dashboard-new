@@ -262,28 +262,56 @@
           class=""
           >Follow Up Detail</app-text-area-input
         >
-
-        <app-text-input
+        <app-option-input
           id="Follow Up by"
           name="Follow Up by"
-          type="text"
-          placeholder="Enter your data"
+          placeholder="Select an option"
           [required]="true"
           [(value)]="formData.follupby"
-          class=""
-          variant="primary"
-          >Follow Up by</app-text-input
+          [options]="[
+            { value: 'Edy Noerachman', label: 'Edy Noerachman' },
+            { value: 'Dian Rachmawati', label: 'Dian Rachmawati' },
+            { value: 'Imanuddin Yahya', label: 'Imanuddin Yahya' },
+            { value: 'I G. A. Aditya Jaya', label: 'I G. A. Aditya Jaya' },
+            { value: 'Fathiya Ikrimah', label: 'Fathiya Ikrimah' },
+            { value: 'Muhammad Rizqi W.', label: 'Muhammad Rizqi W.' },
+            { value: 'Mukhamad Aziz', label: 'Mukhamad Aziz' },
+            { value: 'Anindya Devi R.', label: 'Anindya Devi R.' },
+            { value: 'Gelang Gapuro A.', label: 'Gelang Gapuro A.' },
+            { value: 'Fahad Arwani', label: 'Fahad Arwani' },
+            { value: 'Maulana Mulia', label: 'Maulana Mulia' }
+          ]"
+          >Follow Up by</app-option-input
         >
-        <app-text-input
+        <app-option-input
           id="Follow Up UIC"
           name="Follow Up UIC"
-          type="text"
-          placeholder="Enter your data"
+          placeholder="Select an option"
           [required]="true"
-          class=""
           [(value)]="formData.follup_uic"
-          variant="primary"
-          >Follow Up UIC</app-text-input
+          [options]="[
+            {
+              value: 'TEJ-1',
+              label: 'TEJ-1'
+            },
+            {
+              value: 'TEJ-2',
+              label: 'TEJ-2'
+            },
+            {
+              value: 'TEJ-3',
+              label: 'TEJ-3'
+            },
+            {
+              value: 'TEJ',
+              label: 'TEJ'
+            },
+            {
+              value: 'Other',
+              label: 'Other'
+            }
+          ]"
+          >Follow Up UIC</app-option-input
         >
         <app-text-input
           id="Follow Up Date"

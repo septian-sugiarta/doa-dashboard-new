@@ -206,20 +206,24 @@
           [(value)]="formData.To_UIC"
           [options]="[
             {
-              value: 'Chief Design Office',
-              label: 'Chief Design Office'
+              value: 'TEJ-1',
+              label: 'TEJ-1'
             },
             {
-              value: 'Chief Airworthiness Office',
-              label: 'Chief Airworthiness Office'
+              value: 'TEJ-2',
+              label: 'TEJ-2'
             },
             {
-              value: 'Chief Independent Monitoring',
-              label: 'Chief Independent Monitoring'
+              value: 'TEJ-3',
+              label: 'TEJ-3'
             },
             {
-              value: 'Head of DOA',
-              label: 'Head of DOA'
+              value: 'TEJ',
+              label: 'TEJ'
+            },
+            {
+              value: 'Other',
+              label: 'Other'
             }
           ]"
           >To UIC</app-option-input
@@ -327,16 +331,26 @@
           class=""
           >Encountered Condition</app-text-area-input
         >
-        <app-text-input
-          id="Audited_by"
-          name="Audited_by"
-          type="text"
-          placeholder="Enter your data"
-          [required]="false"
+        <app-option-input
+          id="Audited by"
+          name="Audited by"
+          placeholder="Select an option"
+          [required]="true"
           [(value)]="formData.Audited_by"
-          class=""
-          variant="primary"
-          >Audited by</app-text-input
+          [options]="[
+            { value: 'Edy Noerachman', label: 'Edy Noerachman' },
+            { value: 'Dian Rachmawati', label: 'Dian Rachmawati' },
+            { value: 'Imanuddin Yahya', label: 'Imanuddin Yahya' },
+            { value: 'I G. A. Aditya Jaya', label: 'I G. A. Aditya Jaya' },
+            { value: 'Fathiya Ikrimah', label: 'Fathiya Ikrimah' },
+            { value: 'Muhammad Rizqi W.', label: 'Muhammad Rizqi W.' },
+            { value: 'Mukhamad Aziz', label: 'Mukhamad Aziz' },
+            { value: 'Anindya Devi R.', label: 'Anindya Devi R.' },
+            { value: 'Gelang Gapuro A.', label: 'Gelang Gapuro A.' },
+            { value: 'Fahad Arwani', label: 'Fahad Arwani' },
+            { value: 'Maulana Mulia', label: 'Maulana Mulia' }
+          ]"
+          >Audited by</app-option-input
         >
         <app-text-input
           id="Audit_Date"
