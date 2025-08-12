@@ -85,35 +85,25 @@ export class NcrFormService {
                 return await this.prismaService.ncrForm.findMany({
                     where: {
                         OR: [
-                            {
-                                RegulationBased: {
-                                    contains: keyword,
-                                },
-                            },
-                            {
-                                NCR_nbr: {
-                                    contains: keyword,
-                                },
-                            },
-                            {
-                                To_UIC: {
-                                    contains: keyword,
-                                },
-                            },
-                            ...(isValidDate
-                                ? [
-                                    {
-                                        Answer_due_date: {
-                                            equals: parsedDate,
-                                        },
-                                    },
-                                ]
-                                : []),
-                        ],
+                            {RegulationBased: {contains: keyword}},
+                            {NCR_nbr: {contains: keyword}},
+                            {To_UIC: {contains: keyword}},
+                            ...(isValidDate? [{
+                                Answer_due_date: {
+                                    equals: parsedDate
+                                }
+                            }]: []),
+                        ]
                     },
+                    include: {
+                        NvsForms: true,
+                    }
                 });
             }
-            return await this.prismaService.ncrForm.findMany();
+            
+            return await this.prismaService.ncrForm.findMany({
+                include: {NvsForms: true}
+            });
         } catch (error) {
             console.error('Error fetching NcrForms:', error);
             throw error;

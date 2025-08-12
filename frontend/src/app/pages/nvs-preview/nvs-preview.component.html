@@ -1,37 +1,37 @@
 <div class="container flex flex-col items-center justify-center gap-4">
   <div class="flex justify-center bg-white overflow-y-auto custom-scrollbar" style="height: calc(100vh - 196px)">
     <div class="bg-white w-[21cm] border pt-[1.2cm] pl-[2.28cm] pr-[1.68cm] pb-[13cm]" id="contentToConvert">
-      <div class="font-myriad leading-none">
-        <!-- Table Atas -->
-        <div class="min-w-full border-2 border-black text-[11pt]">
-          <!-- Header -->
-          <div class="grid grid-cols-[140px,300px,1fr] border-b-2 border-black h-16">
-            <div class="border-r-2 border-black">
-              <img src="assets/images/gmf-doa-logo-2.png" alt="logodoa" class="h-6 mt-2 w-32" />
-              <p class="text-center italic">EASA 21J.565</p>
-            </div>
-            <div class="flex items-center justify-center border-r-2 border-black">
-              <p class="font-bold text-base -mt-3">NCR VERIFICATION SHEET</p>
-            </div>
-            <div class="flex items-center justify-center">
-              <div class="grid grid-cols-[90px,1fr,80px] px-[6px] gap-x-[8px] auto-rows-auto h-10 text-sm -mt-3">
-                <div>Doc No.</div>
-                <div>:</div>
-                <div class="italic">{{ data.nvs_no }}</div>
-                <div>Date</div>
-                <div>:</div>
-                <div class="italic">{{ getFormattedResultDate() }}</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Subject -->
-          <div class="flex flex-row gap-4 border-black p-2 -mt-1 h-10">
-            <div>Subject</div>
+  <div class="font-myriad leading-none" *ngIf="data">
+    <!-- Table Atas -->
+    <div class="min-w-full border-2 border-black text-[11pt]">
+      <!-- Header -->
+      <div class="grid grid-cols-[140px,300px,1fr] border-b-2 border-black h-16">
+        <div class="border-r-2 border-black">
+          <img src="assets/images/gmf-doa-logo-2.png" alt="logodoa" class="h-6 mt-2 w-32" />
+          <p class="text-center italic">EASA 21J.565</p>
+        </div>
+        <div class="flex items-center justify-center border-r-2 border-black">
+          <p class="font-bold text-base -mt-3">NCR VERIFICATION SHEET</p>
+        </div>
+        <div class="flex items-center justify-center">
+          <div class="grid grid-cols-[90px,1fr,80px] px-[6px] gap-x-[8px] auto-rows-auto h-10 text-sm -mt-3">
+            <div>Doc No.</div>
             <div>:</div>
-            <div>Closing status of {{ data.ncr_no }}</div>
+            <div class="italic">{{ data.nvs_no }}</div>
+            <div>Date</div>
+            <div>:</div>
+            <div class="italic">{{ getFormattedResultDate() }}</div>
           </div>
         </div>
+      </div>
+
+      <!-- Subject -->
+      <div class="flex flex-row gap-4 border-black p-2 -mt-1 h-10">
+        <div>Subject</div>
+        <div>:</div>
+        <div>Closing status of {{ data.ncr_no }}</div>
+      </div>
+    </div>
 
         <br>
         

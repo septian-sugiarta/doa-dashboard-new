@@ -91,6 +91,7 @@ export class NcrListComponent implements OnInit {
     Level_of_Finding: 0,
     status: 0
   };
+  ncrList: any[] = [];
 
   constructor(
     private readonly ncrFormService: NcrFormService,
@@ -102,6 +103,7 @@ export class NcrListComponent implements OnInit {
   visibility: string = '';
   ngOnInit(): void {
     this.loadNcrForms();
+    this.getNcrForms();
 
     const token = localStorage.getItem('auth_token');
     if (token) {
@@ -322,15 +324,13 @@ export class NcrListComponent implements OnInit {
     return ['/waiting'];
   }
 
-  getNvsLink(regulation: string, NCR_init_ID: number, status: string): string[] {
-    const ncrInitIdStr = NCR_init_ID.toString();
-    if (status === 'Finish') {
-      if (regulation === 'EASA') {
-        return ['/nvs-form', ncrInitIdStr];
-      }
-    }
-    return ['/waiting'];
+  handleNvsClick(ncr: any) {
+  if (ncr.NvsForms && ncr.NvsForms.id) {
+    this.router.navigate(['/nvs-preview', ncr.NCR_init_ID]);
+  } else {
+    this.router.navigate(['/nvs-form', ncr.NCR_init_ID]);
   }
+}
 
   onSearchChange(searchQuery: string) {
     this.search = searchQuery;
@@ -364,5 +364,11 @@ export class NcrListComponent implements OnInit {
         this.loadNcrForms();
         break;
     }
+  }
+  getNcrForms(): void {
+    this.ncrFormService.getNcrForms().subscribe(data => {
+      this.ncrList = data;
+      console.log('NCR List with NvsForms:', JSON.stringify(this.ncrList, null, 2));
+    });
   }
 }

@@ -81,7 +81,7 @@ export const routes: Routes = [
             { path: 'ncr-view-easa-reply/:NCR_init_ID', component: NcrViewEasaReplyComponent },
             { path: 'ncr-view-easa-follow-result/:NCR_init_ID', component: NcrViewEasaFollowResultComponent },
             { path: 'nvs-form/:id', component: NvsFormComponent },
-            { path: 'nvs-preview/:id', component: NvsPreviewComponent },
+            { path: 'nvs-preview/:ncrId', component: NvsPreviewComponent },
             { path: 'ior-view-form/:id_IOR', component: IorViewFormComponent },
             { path: 'ior-view-follow-on/:id_IOR', component: IorViewFollowOnComponent },
             { path: 'coming-soon', component: ComingSoonComponent },

@@ -16,7 +16,7 @@ import jspdf from 'jspdf';
 })
 export class NvsPreviewComponent implements OnInit {
   data: any;
-
+  nvsData: any = null;
   constructor(
     private route: ActivatedRoute,
     private nvsFormService: NvsFormService,
@@ -24,29 +24,29 @@ export class NvsPreviewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const ncrId = this.route.snapshot.paramMap.get('id');
+    const ncrId = this.route.snapshot.paramMap.get('ncrId');
     if (ncrId) {
       this.loadData(Number(ncrId));
     }
   }
 
   loadData(ncrId: number): void {
-    this.nvsFormService.getNvsByNcrId(ncrId).subscribe(
-      (res: any) => {
-        this.data = res;
-      },
-      (err) => console.error('Failed to load NVS data', err)
-    );
-  }
+  this.nvsFormService.getNvsByNcrId(ncrId).subscribe(
+    (res: any) => {
+      console.log('Data loaded:', res);
+      this.data = res;
+    },
+    (err) => console.error('Failed to load NVS data', err)
+  );
+}
 
   getFormattedResultDate() {
-    return this.datePipe.transform(this.data?.resultDate, 'dd-MMM-yyyy');
+    return this.datePipe.transform(this.data?.resultDate, 'dd-MMM-yyyy');  // sesuaikan dengan nvsData
   }
 
   getFormattedVerifiedDate() {
-    return this.datePipe.transform(this.data?.verifiedDate, 'dd-MMM-yyyy');
+    return this.datePipe.transform(this.data?.verifiedDate, 'dd-MMM-yyyy');  // sesuaikan dengan nvsData
   }
-
   shouldCheckReminder(reminder: string | null | undefined): boolean {
     if (!reminder) return false;
 
